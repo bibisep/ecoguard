@@ -1,0 +1,2924 @@
+/* ==========================================
+   ECOGUARD - STYLE.CSS
+   TELAS 1, 2 E 3
+========================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --verde-escuro: #00291d;
+  --verde-folha: #63e64d;
+  --verde-botao: #15975b;
+  --branco: #ffffff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: #00291d;
+  color: var(--branco);
+}
+
+button {
+  font-family: inherit;
+}
+
+button:focus-visible,
+input:focus-visible + .switch-slider {
+  outline: 3px solid #a7f3c5;
+  outline-offset: 3px;
+}
+
+/* ==========================================
+   ESTRUTURA PRINCIPAL
+========================================== */
+
+.app {
+  width: 100%;
+  min-height: 100dvh;
+}
+
+/* ==========================================
+   TELA 1 - BOAS-VINDAS
+========================================== */
+
+.welcome {
+  position: relative;
+  min-height: 100dvh;
+  overflow: hidden;
+
+  background-color: #002d2a;
+  background-image: url("../assets/imagens/fotosp.jpg");
+  background-size: cover;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+}
+
+/* Degradê da imagem */
+
+.welcome-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+
+  background: linear-gradient(
+    to bottom,
+    #002b2a 0%,
+    rgba(0, 43, 42, 0.98) 18%,
+    rgba(0, 48, 44, 0.94) 32%,
+    rgba(0, 54, 49, 0.80) 45%,
+    rgba(0, 54, 49, 0.45) 58%,
+    rgba(0, 40, 32, 0.12) 73%,
+    rgba(0, 28, 22, 0.65) 90%,
+    rgba(0, 24, 18, 0.92) 100%
+  );
+}
+
+/* Conteúdo */
+
+.welcome-content {
+  position: relative;
+  z-index: 2;
+
+  min-height: 100dvh;
+  width: 100%;
+  max-width: 430px;
+
+  margin: 0 auto;
+  padding: 90px 25px 48px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Logo */
+
+.welcome-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.logo-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.app-name {
+  font-size: 38px;
+  font-weight: 800;
+  letter-spacing: -1.5px;
+}
+
+.eco {
+  color: var(--verde-folha);
+}
+
+.guard {
+  color: white;
+}
+
+/* Textos */
+
+.welcome-text {
+  text-align: center;
+  margin-top: 65px;
+}
+
+.welcome-text h2 {
+  font-size: 25px;
+  font-weight: 800;
+  line-height: 1.35;
+  color: white;
+}
+
+.green-line {
+  width: 46px;
+  height: 4px;
+  margin: 25px auto;
+  border-radius: 10px;
+  background: #63e64d;
+}
+
+.welcome-text p {
+  font-size: 15px;
+  line-height: 1.8;
+  color: #f0f7f2;
+}
+
+/* Rodapé */
+
+.welcome-footer {
+  width: 100%;
+  margin-top: auto;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #ffffff70;
+}
+
+.dot.active {
+  background: #28d984;
+}
+
+/* Botão Começar */
+
+.start-button {
+  width: 100%;
+  min-height: 62px;
+  padding: 14px 24px;
+
+  border: none;
+  border-radius: 999px;
+
+  background: linear-gradient(
+    110deg,
+    #30c676,
+    #159356
+  );
+
+  color: white;
+  font-size: 17px;
+  font-weight: 700;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.start-button:hover {
+  transform: translateY(-2px);
+}
+
+.start-button:active {
+  transform: scale(0.98);
+}
+
+.start-button svg {
+  width: 26px;
+  height: 26px;
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.start-button:hover svg {
+  transform: translateX(4px);
+}
+
+/* ==========================================
+   TELA 2 - PERMISSÕES
+========================================== */
+
+.permissions {
+  display: none;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+
+  min-height: 100dvh;
+  padding: 38px 22px 45px;
+
+  flex-direction: column;
+  color: white;
+
+  background:
+    radial-gradient(
+      ellipse at 50% 55%,
+      #075337 0%,
+      #003c29 45%,
+      #00291d 85%
+    );
+}
+
+/* Cabeçalho */
+
+.permissions-header {
+  position: relative;
+  z-index: 2;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.permissions-back {
+  position: relative;
+  z-index: 3;
+
+  width: 40px;
+  height: 40px;
+  padding: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: transparent;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+.permissions-back svg {
+  width: 29px;
+  height: 29px;
+  transition: transform 0.2s ease;
+}
+
+.permissions-back:hover svg {
+  transform: translateX(-3px);
+}
+
+.permissions-brand {
+  position: relative;
+  z-index: 3;
+
+  display: flex;
+  align-items: center;
+  gap: 7px;
+
+  font-size: 17px;
+  font-weight: 800;
+}
+
+.brand-icon {
+  color: #63e64d;
+  font-size: 27px;
+}
+
+.header-space {
+  width: 30px;
+}
+
+/* Apresentação */
+
+.permissions-intro {
+  position: relative;
+  z-index: 1;
+
+  text-align: center;
+  margin-top: 65px;
+}
+
+.permissions-icon {
+  width: 76px;
+  height: 76px;
+  margin: 0 auto 24px;
+  border-radius: 20px;
+
+  display: grid;
+  place-items: center;
+
+  background: linear-gradient(
+    145deg,
+    #237b51,
+    #075338
+  );
+}
+
+.permissions-icon svg {
+  width: 43px;
+  height: 43px;
+  color: white;
+}
+
+.permissions-intro h2 {
+  font-size: 32px;
+  font-weight: 800;
+  margin-bottom: 18px;
+}
+
+.permissions-intro p {
+  font-size: 15px;
+  line-height: 1.65;
+  max-width: 340px;
+  margin: 0 auto;
+  color: #e5f1e9;
+}
+
+/* Cartões */
+
+.permissions-list {
+  position: relative;
+  z-index: 1;
+
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 40px;
+}
+
+.permission-card {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+
+  padding: 21px 17px;
+  border-radius: 20px;
+
+  background: linear-gradient(
+    135deg,
+    #ffffff,
+    #f0f1e8
+  );
+
+  color: #10291e;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+}
+
+.permission-icon {
+  width: 54px;
+  height: 54px;
+  flex-shrink: 0;
+
+  border-radius: 15px;
+  background: #e0efd9;
+
+  display: grid;
+  place-items: center;
+}
+
+.permission-icon svg {
+  width: 29px;
+  height: 29px;
+  color: #06482b;
+}
+
+.permission-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.permission-info h3 {
+  font-size: 16px;
+  font-weight: 800;
+  margin-bottom: 5px;
+}
+
+.permission-info p {
+  font-size: 12px;
+  line-height: 1.45;
+  color: #36443c;
+}
+
+/* Switches */
+
+.permission-switch {
+  position: relative;
+  display: inline-block;
+  width: 48px;
+  height: 28px;
+  flex-shrink: 0;
+}
+
+.permission-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.switch-slider {
+  position: absolute;
+  inset: 0;
+
+  border-radius: 30px;
+  background: #a9b3ab;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.switch-slider::before {
+  content: "";
+  position: absolute;
+
+  width: 22px;
+  height: 22px;
+  left: 3px;
+  bottom: 3px;
+
+  border-radius: 50%;
+  background: white;
+  transition: 0.25s;
+}
+
+.permission-switch input:checked + .switch-slider {
+  background: #159b42;
+}
+
+.permission-switch input:checked + .switch-slider::before {
+  transform: translateX(20px);
+}
+
+/* Botão Continuar */
+
+.permissions-footer {
+  position: relative;
+  z-index: 1;
+
+  margin-top: auto;
+  padding-top: 35px;
+}
+
+.continue-button {
+  width: 100%;
+  min-height: 62px;
+  border: none;
+  border-radius: 999px;
+
+  background: linear-gradient(
+    110deg,
+    #30c676,
+    #159356
+  );
+
+  color: white;
+  font-size: 18px;
+  font-weight: 700;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+
+  cursor: pointer;
+}
+
+.continue-button svg {
+  width: 26px;
+  height: 26px;
+  transition: transform 0.2s ease;
+}
+
+.continue-button:hover svg {
+  transform: translateX(4px);
+}
+
+/* ==========================================
+   ONDAS DECORATIVAS - TELA 2
+========================================== */
+
+/* Onda superior */
+
+.permissions-top-wave {
+  position: absolute;
+
+  top: 20px;
+  left: -160px;
+
+  width: 470px;
+  height: 350px;
+
+  border-radius: 50%;
+
+  background: linear-gradient(
+    135deg,
+    rgba(38, 145, 79, 0.38),
+    rgba(10, 94, 54, 0.20),
+    transparent 85%
+  );
+
+  transform: rotate(-28deg);
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Onda inferior 1 */
+
+.permissions::before {
+  content: "";
+  position: absolute;
+
+  left: -20%;
+  bottom: 65px;
+
+  width: 140%;
+  height: 190px;
+
+  background: linear-gradient(
+    180deg,
+    rgba(43, 139, 72, 0.35),
+    rgba(0, 65, 42, 0.08)
+  );
+
+  border-radius: 50% 50% 0 0 / 42% 65% 0 0;
+  transform: rotate(7deg);
+
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Onda inferior 2 */
+
+.permissions::after {
+  content: "";
+  position: absolute;
+
+  left: -25%;
+  bottom: 35px;
+
+  width: 150%;
+  height: 155px;
+
+  background: linear-gradient(
+    180deg,
+    rgba(16, 103, 61, 0.45),
+    rgba(0, 49, 32, 0.12)
+  );
+
+  border-radius: 55% 45% 0 0 / 50% 60% 0 0;
+  transform: rotate(-8deg);
+
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* ==========================================
+   TELA 3 - DASHBOARD
+========================================== */
+
+.dashboard {
+  display: none;
+  position: relative;
+
+  width: 100%;
+  height: 100dvh;
+  min-height: 0;
+
+  padding: 0;
+  flex-direction: column;
+
+  color: white;
+
+  background:
+    radial-gradient(
+      ellipse at 65% 65%,
+      #075537,
+      transparent 65%
+    ),
+    linear-gradient(
+      160deg,
+      #00291d,
+      #003c29 65%,
+      #00251b
+    );
+
+  overflow: hidden;
+}
+
+/* ==========================================
+   ÁREA ROLÁVEL
+========================================== */
+
+.dashboard-content {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  padding: 35px 20px 25px;
+
+  scrollbar-width: none;
+  overscroll-behavior: contain;
+}
+
+.dashboard-content::-webkit-scrollbar {
+  display: none;
+}
+
+/* ==========================================
+   CABEÇALHO
+========================================== */
+
+.dash-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+
+  margin-bottom: 35px;
+}
+
+.dash-icon-btn {
+  width: 34px;
+  height: 38px;
+
+  display: grid;
+  place-items: center;
+
+  background: transparent;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+.dash-icon-btn svg {
+  width: 27px;
+  height: 27px;
+}
+
+.dash-brand {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+
+  font-size: 18px;
+  letter-spacing: -0.6px;
+}
+
+.dash-brand svg {
+  width: 32px;
+  height: 32px;
+}
+
+.dash-bell {
+  position: relative;
+}
+
+.notification-dot {
+  position: absolute;
+  right: 0;
+  top: 2px;
+
+  width: 10px;
+  height: 10px;
+
+  background: #78e98a;
+  border-radius: 50%;
+}
+
+/* ==========================================
+   SAUDAÇÃO
+========================================== */
+
+.dash-greeting {
+  margin-bottom: 26px;
+}
+
+.dash-greeting h1 {
+  font-size: 30px;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+
+.dash-location {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+
+  border: none;
+  background: transparent;
+
+  color: white;
+  font: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.dash-location svg {
+  width: 21px;
+  height: 21px;
+  color: #91f3a2;
+}
+
+/* ==========================================
+   CARTÃO CONDIÇÕES SEGURAS
+========================================== */
+
+.safe-card {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+
+  min-height: 130px;
+  padding: 20px;
+
+  border: 1.5px solid #42c85a;
+  border-radius: 24px;
+
+  background: linear-gradient(
+    120deg,
+    #176c36,
+    #004b2a 85%
+  );
+
+  box-shadow: 0 10px 25px #0002;
+}
+
+.safe-shield {
+  width: 57px;
+  flex-shrink: 0;
+  color: #b6f7bf;
+}
+
+.safe-shield svg {
+  width: 100%;
+  height: 65px;
+}
+
+.safe-divider {
+  width: 1px;
+  height: 72px;
+  flex-shrink: 0;
+  background: #a5dca488;
+}
+
+.safe-info h2 {
+  font-size: 19px;
+  line-height: 1.2;
+  margin-bottom: 10px;
+}
+
+.safe-info p {
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+/* ==========================================
+   INDICADORES AMBIENTAIS
+========================================== */
+
+.dash-indicators {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.indicator-card {
+  min-width: 0;
+  min-height: 155px;
+
+  padding: 17px 15px;
+  border-radius: 23px;
+
+  color: #07271a;
+}
+
+.temp-card {
+  background: linear-gradient(
+    135deg,
+    #ffffff,
+    #fff0c6
+  );
+}
+
+.air-card {
+  background: linear-gradient(
+    135deg,
+    #ffffff,
+    #e2f0d4
+  );
+}
+
+.indicator-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  height: 33px;
+  margin-bottom: 12px;
+}
+
+.indicator-top svg {
+  width: 27px;
+  height: 27px;
+  color: #087247;
+}
+
+.weather-symbol,
+.air-symbol {
+  font-size: 31px;
+}
+
+.indicator-card h3 {
+  font-size: 13px;
+  margin-bottom: 6px;
+  letter-spacing: -0.3px;
+}
+
+.indicator-card strong {
+  display: block;
+
+  font-size: 34px;
+  font-weight: 800;
+  letter-spacing: -1px;
+}
+
+.indicator-card p {
+  font-size: 12px;
+  margin-top: 3px;
+}
+
+/* ==========================================
+   ALERTAS RECENTES
+========================================== */
+
+.dash-section-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+
+  margin: 29px 0 15px;
+}
+
+.dash-section-title h2 {
+  font-size: 21px;
+  letter-spacing: -0.6px;
+}
+
+.dash-section-title button {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+
+  background: transparent;
+  border: none;
+
+  color: #7bea85;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+.dash-section-title button svg {
+  width: 21px;
+  height: 21px;
+}
+
+.dash-alerts {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  padding-bottom: 15px;
+}
+
+.recent-alert {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  width: 100%;
+  min-height: 79px;
+  padding: 15px;
+
+  border: none;
+  border-radius: 19px;
+
+  background: linear-gradient(
+    115deg,
+    #ffffff,
+    #f0f2e5
+  );
+
+  color: #10251b;
+  text-align: left;
+  font-family: inherit;
+}
+
+.recent-icon {
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+
+  display: grid;
+  place-items: center;
+}
+
+.check-icon {
+  border-radius: 50%;
+  background: #22a43e;
+  color: white;
+}
+
+.check-icon svg {
+  width: 27px;
+  height: 27px;
+}
+
+.sun-icon {
+  font-size: 38px;
+  color: #ffbd34;
+}
+
+.recent-alert h3 {
+  font-size: 15px;
+  margin-bottom: 5px;
+}
+
+.recent-alert p {
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.alert-clickable {
+  cursor: pointer;
+}
+
+.alert-chevron,
+.eco-chevron {
+  width: 26px;
+  height: 26px;
+
+  flex-shrink: 0;
+  margin-left: auto;
+
+  color: #123b29;
+}
+
+/* ==========================================
+   MENU INFERIOR - CORREÇÃO DEFINITIVA
+========================================== */
+
+.dashboard .dash-nav {
+  position: relative;
+
+  bottom: auto;
+  left: auto;
+  right: auto;
+
+  width: auto;
+  max-width: none;
+  transform: none;
+
+  flex-shrink: 0;
+  z-index: 10;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+
+  margin: 0 16px 16px;
+  padding: 9px 6px;
+
+  border: 1px solid #287c4a;
+  border-radius: 26px;
+
+  background: linear-gradient(
+    145deg,
+    #064b30,
+    #002d20
+  );
+
+  box-shadow: 0 8px 24px #001b1480;
+}
+
+.dash-nav-item {
+  flex: 1;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+
+  min-height: 65px;
+  padding: 7px 3px;
+
+  border: none;
+  border-radius: 21px;
+
+  background: transparent;
+  color: white;
+
+  font: inherit;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.dash-nav-item svg {
+  width: 25px;
+  height: 25px;
+}
+
+.dash-nav-item.active {
+  background: linear-gradient(
+    140deg,
+    #147c3b,
+    #00512c
+  );
+
+  color: #a2ffa9;
+  font-weight: 700;
+}
+
+/* ==========================================
+   SETAS PADRONIZADAS
+========================================== */
+
+.eco-arrow {
+  width: 25px;
+  height: 25px;
+  flex-shrink: 0;
+
+  transition: transform 0.2s ease;
+}
+
+.start-button:hover .eco-arrow,
+.continue-button:hover .eco-arrow,
+.dash-section-title button:hover .eco-arrow {
+  transform: translateX(4px);
+}
+
+/* ==========================================
+   RESPONSIVIDADE
+========================================== */
+
+/* Simulação de celular no computador */
+
+@media (min-width: 600px) {
+
+  .app {
+    width: 390px;
+    height: 800px;
+    min-height: 0;
+
+    margin: 16px auto;
+    border: 8px solid #071c16;
+    border-radius: 45px;
+
+    overflow: hidden;
+    background: #00291d;
+  }
+
+  .welcome,
+  .permissions,
+  .dashboard {
+    height: 100%;
+    min-height: 0;
+  }
+
+  .welcome-content {
+    min-height: 100%;
+    height: 100%;
+  }
+
+  .dashboard {
+    height: 100%;
+  }
+
+}
+
+/* Celulares menores */
+
+@media (max-width: 360px) {
+
+  .dashboard-content {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  .dash-brand {
+    font-size: 15px;
+  }
+
+  .safe-card {
+    padding: 15px;
+    gap: 10px;
+  }
+
+  .safe-info h2 {
+    font-size: 17px;
+  }
+
+  .indicator-card {
+    padding: 13px 11px;
+  }
+
+  .permissions {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+}
+
+/* Telas baixas */
+
+@media (max-height: 720px) {
+
+  .welcome-content {
+    padding-top: 45px;
+    padding-bottom: 25px;
+  }
+
+  .welcome-text {
+    margin-top: 35px;
+  }
+
+  .permissions {
+    padding-top: 20px;
+    padding-bottom: 25px;
+  }
+
+  .permissions-intro {
+    margin-top: 25px;
+  }
+
+  .permissions-list {
+    margin-top: 25px;
+  }
+
+}
+/* SETA DA LOCALIZAÇÃO - DASHBOARD */
+
+.dash-location .location-chevron {
+  width: 20px;
+  height: 20px;
+  color: #ffffff;
+  margin-left: 2px;
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.dash-location:hover .location-chevron {
+  transform: translateY(3px);
+}
+
+/* =====================================
+   TELA 4 - ALERTAS AMBIENTAIS
+===================================== */
+
+.alerts-page {
+  display: none;
+  position: relative;
+  width: 100%;
+  height: 100dvh;
+  min-height: 0;
+  flex-direction: column;
+  overflow: hidden;
+  background: linear-gradient(155deg, #00291d, #00432d 70%, #00291d);
+  color: white;
+}
+
+.alerts-content {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding: 35px 20px 25px;
+  scrollbar-width: none;
+}
+
+.alerts-content::-webkit-scrollbar {
+  display: none;
+}
+
+.alerts-heading {
+  margin: 35px 0 30px;
+}
+
+.alerts-heading h1 {
+  font-size: 36px;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.alerts-heading p {
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+/* Cartões */
+
+.environment-alert {
+  display: block;
+  width: 100%;
+  padding: 0;
+  margin-bottom: 16px;
+  overflow: hidden;
+
+  border: none;
+  border-radius: 23px;
+  text-align: left;
+  font-family: inherit;
+  color: #10251b;
+  cursor: pointer;
+}
+
+.heat-alert {
+  background: linear-gradient(120deg, #ffe4ac, #fffaf0 70%);
+}
+
+.air-alert {
+  background: linear-gradient(120deg, #dcebd9, #ffffff 75%);
+}
+
+.rain-alert {
+  background: linear-gradient(120deg, #ccecff, #ffffff 75%);
+}
+
+.environment-alert-main {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 20px 15px 16px;
+}
+
+.environment-icon {
+  width: 58px;
+  flex-shrink: 0;
+}
+
+.environment-icon svg {
+  width: 52px;
+  height: 52px;
+}
+
+.heat-alert .environment-icon {
+  color: #e85b16;
+}
+
+.air-alert .environment-icon {
+  color: #075d3b;
+}
+
+.rain-alert .environment-icon {
+  color: #187eaf;
+}
+
+.environment-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.environment-info h2 {
+  font-size: 21px;
+  font-weight: 800;
+  margin-bottom: 7px;
+}
+
+.environment-info p {
+  font-size: 12px;
+  line-height: 1.5;
+  margin-top: 8px;
+}
+
+.alert-level {
+  display: inline-block;
+  padding: 5px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.level-high {
+  background: #e95a18;
+  color: white;
+}
+
+.level-medium {
+  background: #ffdc83;
+  color: #17251a;
+}
+
+.level-attention {
+  background: #94d7ff;
+  color: #103044;
+}
+
+/* Rodapé dos cartões */
+
+.environment-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 16px;
+  background: #eaf2e6a8;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+/* Setas padronizadas */
+
+.environment-alert .eco-chevron {
+  width: 23px;
+  height: 23px;
+  margin-left: 0;
+  color: #123b29;
+  transition: transform 0.2s ease;
+}
+
+.environment-alert:hover .eco-chevron {
+  transform: translateX(3px);
+}
+
+/* Menu fixo dentro da moldura */
+
+.alerts-page .dash-nav {
+  position: relative;
+  bottom: auto;
+  left: auto;
+  right: auto;
+  width: auto;
+  max-width: none;
+  transform: none;
+  flex-shrink: 0;
+  margin: 0 16px 16px;
+  z-index: 10;
+}
+
+/* Desktop */
+
+@media (min-width: 600px) {
+  .alerts-page {
+    height: 100%;
+  }
+}
+
+/* =====================================
+   ECOGUARD - CORREÇÃO TELA 4
+===================================== */
+
+/* Estrutura da tela */
+.alerts-page {
+  display: none;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+  overflow: hidden;
+}
+
+/* Conteúdo com rolagem */
+.alerts-content {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 35px 20px 25px;
+  scrollbar-width: none;
+}
+
+.alerts-content::-webkit-scrollbar {
+  display: none;
+}
+
+/* Menu inferior horizontal */
+.alerts-page .dash-nav {
+  position: relative;
+  bottom: auto;
+  left: auto;
+  right: auto;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+
+  width: auto;
+  max-width: none;
+  flex-shrink: 0;
+
+  margin: 0 16px 16px;
+  padding: 9px 6px;
+
+  transform: none;
+  z-index: 10;
+
+  border: 1px solid #287c4a;
+  border-radius: 26px;
+
+  background: linear-gradient(
+    145deg,
+    #064b30,
+    #002d20
+  );
+
+  box-shadow: 0 8px 24px #001b1480;
+}
+
+/* Botões do menu */
+.alerts-page .dash-nav-item {
+  flex: 1;
+  min-width: 0;
+  min-height: 65px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+
+  padding: 7px 3px;
+  border: none;
+  border-radius: 21px;
+
+  background: transparent;
+  color: white;
+
+  font-size: 12px;
+  cursor: pointer;
+}
+
+/* Ícones */
+.alerts-page .dash-nav-item svg {
+  width: 25px;
+  height: 25px;
+  flex-shrink: 0;
+}
+
+/* Botão Alertas selecionado */
+.alerts-page .dash-nav-item.active {
+  background: linear-gradient(
+    140deg,
+    #147c3b,
+    #00512c
+  );
+
+  color: #a2ffa9;
+  font-weight: 700;
+}
+
+/* =====================================
+   TELA 5 - DETALHES DO ALERTA
+===================================== */
+
+.alert-detail {
+  display: none;
+  width: 100%;
+  height: 100dvh;
+  min-height: 0;
+  overflow: hidden;
+  flex-direction: column;
+
+  background: linear-gradient(
+    165deg,
+    #00291d,
+    #00452f 75%,
+    #dceee0
+  );
+
+  color: white;
+}
+
+.alert-detail-content {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 35px 20px 35px;
+  scrollbar-width: none;
+}
+
+.alert-detail-content::-webkit-scrollbar {
+  display: none;
+}
+
+/* Cabeçalho */
+
+.detail-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.detail-back {
+  width: 35px;
+  height: 35px;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+.detail-back svg {
+  width: 29px;
+  height: 29px;
+}
+
+.detail-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 19px;
+}
+
+.detail-leaf {
+  color: #63e64d;
+  font-size: 30px;
+}
+
+.detail-header-space {
+  width: 35px;
+}
+
+/* Localização */
+
+.detail-location {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  font-size: 17px;
+}
+
+.detail-location svg {
+  width: 25px;
+  height: 25px;
+  color: #91f3a2;
+}
+
+/* Banner de calor */
+
+.detail-heat-banner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 17px;
+
+  min-height: 155px;
+  padding: 25px 20px;
+  border-radius: 24px;
+  overflow: hidden;
+
+  background: linear-gradient(
+    110deg,
+    #f1780e,
+    #db4b0b 55%,
+    #ffb62f
+  );
+}
+
+.detail-heat-icon {
+  z-index: 1;
+  width: 58px;
+  flex-shrink: 0;
+  color: white;
+}
+
+.detail-heat-icon svg {
+  width: 58px;
+  height: 75px;
+}
+
+.detail-heat-text {
+  position: relative;
+  z-index: 1;
+  border-left: 1px solid #ffffff9c;
+  padding-left: 17px;
+}
+
+.detail-heat-text h1 {
+  font-size: 26px;
+  line-height: 1.15;
+  margin-bottom: 10px;
+}
+
+.detail-heat-text span {
+  display: inline-block;
+  padding: 7px 15px;
+  border-radius: 999px;
+
+  background: #fff0ad;
+  color: #8c1b0a;
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.detail-sun {
+  position: absolute;
+  right: -20px;
+  top: 10px;
+
+  width: 125px;
+  height: 125px;
+  border-radius: 50%;
+
+  background: radial-gradient(
+    circle,
+    #ffe88e 0%,
+    #ffd05c 40%,
+    #ffc53d80 60%,
+    transparent 75%
+  );
+}
+
+/* Temperatura */
+
+.detail-temperature {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+
+  margin-top: 16px;
+  padding: 20px;
+  border-radius: 24px;
+
+  background: linear-gradient(
+    120deg,
+    #08653b,
+    #003b29
+  );
+
+  border: 1px solid #227a50;
+}
+
+.detail-temp-value strong {
+  display: block;
+  font-size: 46px;
+  line-height: 1;
+}
+
+.detail-temp-value span {
+  font-size: 12px;
+}
+
+.detail-temp-divider {
+  width: 1px;
+  height: 65px;
+  background: #ffffff80;
+}
+
+.detail-risk {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.detail-risk > span {
+  color: #ffe29b;
+  font-size: 29px;
+}
+
+.detail-risk p {
+  font-size: 12px;
+}
+
+.detail-risk strong {
+  color: #ffe29b;
+  font-size: 20px;
+}
+
+/* Cartões */
+
+.detail-card {
+  display: flex;
+  gap: 14px;
+  padding: 20px;
+  margin-top: 16px;
+
+  border-radius: 22px;
+  color: #10251b;
+}
+
+.detail-card h2 {
+  font-size: 19px;
+  margin-bottom: 6px;
+}
+
+.detail-card p {
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.situation-card {
+  background: linear-gradient(
+    120deg,
+    #fff1cd,
+    #fffaf0
+  );
+}
+
+.detail-card-icon svg {
+  width: 30px;
+  height: 30px;
+  color: #07512f;
+}
+
+/* Cuidados */
+
+.care-card {
+  display: block;
+  background: #ffffff;
+}
+
+.care-heading {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 15px;
+}
+
+.care-heading svg {
+  width: 30px;
+  height: 30px;
+  color: #07512f;
+  flex-shrink: 0;
+}
+
+.care-list {
+  list-style: none;
+  padding: 0;
+}
+
+.care-list li {
+  position: relative;
+  padding-left: 31px;
+  margin-bottom: 12px;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.care-list li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  top: 0;
+
+  width: 21px;
+  height: 21px;
+  border-radius: 50%;
+
+  display: grid;
+  place-items: center;
+
+  background: #1ca23c;
+  color: white;
+  font-weight: 800;
+}
+
+/* Fonte */
+
+.source-card {
+  align-items: center;
+  background: #e8f4e9;
+}
+
+.source-card > svg:first-child {
+  width: 30px;
+  height: 30px;
+  flex-shrink: 0;
+  color: #07512f;
+}
+
+.source-card > div {
+  flex: 1;
+}
+
+.source-external {
+  width: 23px;
+  height: 23px;
+  flex-shrink: 0;
+  color: #07512f;
+}
+
+/* Botão ativar alertas */
+
+.activate-alert-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+
+  width: 100%;
+  min-height: 65px;
+  margin-top: 22px;
+  padding: 14px 18px;
+
+  border: none;
+  border-radius: 999px;
+
+  background: linear-gradient(
+    110deg,
+    #139d4d,
+    #005b30
+  );
+
+  color: white;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.activate-alert-btn svg {
+  width: 25px;
+  height: 25px;
+  flex-shrink: 0;
+}
+
+/* Moldura desktop */
+
+@media (min-width: 600px) {
+  .alert-detail {
+    height: 100%;
+  }
+}
+
+/* =====================================
+   TELA 6 - BLOQUEIO DO CELULAR
+===================================== */
+
+.lock-screen {
+  display: none;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  overflow: hidden;
+  background: #002d20;
+  color: white;
+}
+
+.lock-wallpaper {
+  position: absolute;
+  inset: 0;
+
+  background:
+    radial-gradient(
+      ellipse at 65% 65%,
+      #146b35 0%,
+      transparent 45%
+    ),
+    radial-gradient(
+      ellipse at 20% 20%,
+      #245c27 0%,
+      transparent 38%
+    ),
+    linear-gradient(
+      145deg,
+      #001a10,
+      #00412a 65%,
+      #001e14
+    );
+}
+
+.lock-wallpaper::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    #00170b35,
+    transparent 40%,
+    #00190a40
+  );
+}
+
+.lock-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 25px 25px 15px;
+}
+
+/* Barra superior */
+
+.lock-status {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.lock-status-icons {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.lock-status-icons svg {
+  width: 19px;
+  height: 19px;
+}
+
+.lock-battery {
+  width: 23px;
+  height: 12px;
+  border: 2px solid white;
+  border-radius: 3px;
+  background: white;
+}
+
+/* Cadeado */
+
+.lock-symbol {
+  display: flex;
+  justify-content: center;
+  margin-top: 48px;
+}
+
+.lock-symbol svg {
+  width: 37px;
+  height: 37px;
+}
+
+/* Relógio */
+
+.lock-clock {
+  text-align: center;
+  margin-top: 12px;
+}
+
+.lock-clock h1 {
+  font-size: clamp(72px, 22vw, 105px);
+  font-weight: 250;
+  line-height: 1.1;
+  letter-spacing: -4px;
+}
+
+.lock-clock p {
+  font-size: 25px;
+  font-weight: 400;
+  margin-top: 4px;
+}
+
+/* Notificação */
+
+.eco-notification {
+  display: block;
+  width: 100%;
+  margin-top: 42px;
+  padding: 18px;
+
+  border: 1px solid #ffffff90;
+  border-radius: 25px;
+
+  background: linear-gradient(
+    125deg,
+    #f4f7e9f5,
+    #dbe8d0f5
+  );
+
+  color: #092c1b;
+  text-align: left;
+  font-family: inherit;
+  cursor: pointer;
+
+  opacity: 0;
+  transform: translateY(-25px);
+
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease;
+}
+
+.eco-notification.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.notification-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.notification-logo {
+  width: 43px;
+  height: 43px;
+  display: grid;
+  place-items: center;
+
+  border-radius: 11px;
+  background: #005b35;
+  color: #9affb5;
+}
+
+.notification-logo svg {
+  width: 29px;
+  height: 29px;
+}
+
+.notification-header strong {
+  font-size: 17px;
+  flex: 1;
+}
+
+.notification-header > span {
+  color: #555;
+  font-size: 13px;
+}
+
+.eco-notification h2 {
+  font-size: 20px;
+  line-height: 1.2;
+  margin-bottom: 8px;
+}
+
+.eco-notification p {
+  font-size: 16px;
+  line-height: 1.45;
+}
+
+/* Ícones inferiores */
+
+.lock-shortcuts {
+  display: flex;
+  justify-content: space-between;
+  margin-top: auto;
+  padding: 0 15px 30px;
+}
+
+.lock-shortcut {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+
+  display: grid;
+  place-items: center;
+
+  background: #ffffff25;
+  backdrop-filter: blur(12px);
+}
+
+.lock-shortcut svg {
+  width: 25px;
+  height: 25px;
+}
+
+.lock-home-indicator {
+  width: 110px;
+  height: 5px;
+  margin: 0 auto;
+  border-radius: 999px;
+  background: white;
+}
+
+@media (max-height: 680px) {
+  .lock-symbol {
+    margin-top: 25px;
+  }
+
+  .eco-notification {
+    margin-top: 25px;
+  }
+
+  .lock-clock h1 {
+    font-size: 72px;
+  }
+}
+
+/* =====================================
+   TELA 6 - ÍCONES DO IPHONE
+===================================== */
+
+.lock-status {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  color: #ffffff;
+}
+
+.lock-carrier {
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -0.3px;
+}
+
+.lock-status-icons {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 6px;
+}
+
+.lock-status-icons .status-signal {
+  width: 19px;
+  height: 19px;
+}
+
+.lock-status-icons .status-wifi {
+  width: 20px;
+  height: 20px;
+}
+
+.lock-status-icons .status-battery {
+  width: 27px;
+  height: 16px;
+}
+
+/* Oculta a bateria antiga, se existir */
+.lock-status-icons .lock-battery {
+  display: none;
+}
+
+/* =====================================
+   TELA 7 - MAPA DE RISCOS
+===================================== */
+
+.map-page {
+  display: none;
+  position: relative;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  overflow: hidden;
+  background: linear-gradient(160deg, #00291d, #00432d);
+  color: white;
+}
+
+.map-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 35px 20px 10px;
+  flex-shrink: 0;
+}
+
+.map-back {
+  width: 35px;
+  height: 35px;
+  padding: 3px;
+  border: 0;
+  background: transparent;
+  color: white;
+  cursor: pointer;
+}
+
+.map-back svg {
+  width: 29px;
+  height: 29px;
+}
+
+.map-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 17px;
+}
+
+.map-brand span {
+  color: #63e64d;
+  font-size: 28px;
+}
+
+.map-header-spacer {
+  width: 35px;
+}
+
+.map-scroll {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 15px 18px 20px;
+  scrollbar-width: none;
+}
+
+.map-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.map-heading {
+  text-align: center;
+  margin: 10px 0 18px;
+}
+
+.map-heading h1 {
+  font-size: 25px;
+  font-weight: 800;
+  margin-bottom: 7px;
+}
+
+.map-heading p {
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.map-location {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  margin-bottom: 12px;
+  border-radius: 15px;
+  background: #f5f6f1;
+  color: #10291d;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.map-location svg {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.map-location .map-chevron {
+  margin-left: auto;
+}
+
+/* MAPA */
+
+.map-container {
+  width: 100%;
+  height: 305px;
+  border-radius: 19px;
+  overflow: hidden;
+  border: 1px solid #27744a;
+}
+
+#ecoRiskMap {
+  width: 100%;
+  height: 100%;
+  background: #143c2b;
+  z-index: 1;
+}
+
+/* LEGENDA */
+
+.map-legend {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 12px;
+  padding: 12px 10px;
+  border-radius: 13px;
+  background: #003b2b;
+  font-size: 10px;
+}
+
+.map-legend span {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.map-legend i {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+}
+
+.risk-high { background: #f04444; }
+.risk-medium { background: #ff9629; }
+.risk-low { background: #ffd83d; }
+
+/* ALERTAS */
+
+.map-alerts {
+  margin-top: 16px;
+}
+
+.map-alerts h2 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.map-alert-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 13px;
+  border: none;
+  border-radius: 16px;
+  background: #f5f6f1;
+  color: #10291d;
+  text-align: left;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.map-alert-icon {
+  display: grid;
+  place-items: center;
+  width: 43px;
+  height: 43px;
+  flex-shrink: 0;
+  border-radius: 12px;
+  background: #ffe0d8;
+  color: #e54b25;
+}
+
+.map-alert-icon svg {
+  width: 27px;
+  height: 27px;
+}
+
+.map-alert-card strong {
+  font-size: 14px;
+}
+
+.map-alert-card p {
+  margin-top: 4px;
+  font-size: 11px;
+}
+
+.map-alert-arrow {
+  width: 20px;
+  height: 20px;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+/* MENU INFERIOR */
+
+.map-page .map-bottom-nav {
+  position: relative;
+  bottom: auto;
+  left: auto;
+  right: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  width: auto;
+  max-width: none;
+  flex-shrink: 0;
+  margin: 0 16px 16px;
+  padding: 9px 6px;
+  transform: none;
+  border: 1px solid #287c4a;
+  border-radius: 26px;
+  background: linear-gradient(145deg, #064b30, #002d20);
+  z-index: 10;
+}
+
+.map-page .dash-nav-item {
+  display: flex;
+  flex: 1;
+  min-width: 0;
+  min-height: 65px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding: 7px 3px;
+  border: none;
+  border-radius: 21px;
+  background: transparent;
+  color: white;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.map-page .dash-nav-item svg {
+  width: 25px;
+  height: 25px;
+}
+
+.map-page .dash-nav-item.active {
+  background: linear-gradient(140deg, #147c3b, #00512c);
+  color: #a2ffa9;
+  font-weight: 700;
+}
+
+/* =====================================
+   ECOGUARD - CARTÃO DO MAPA
+===================================== */
+
+.map-region-card {
+  margin-top: 14px;
+  padding: 18px;
+  border-radius: 22px;
+  background: linear-gradient(
+    145deg,
+    #fffdf5,
+    #e9f1e6
+  );
+  color: #082d1d;
+  box-shadow: 0 8px 25px #00000025;
+  animation: mapCardEnter 0.3s ease;
+}
+
+.map-region-card[hidden] {
+  display: none !important;
+}
+
+.map-region-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.map-region-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #63816c;
+}
+
+.map-region-top h3 {
+  margin: 6px 0 0;
+  font-size: 21px;
+  font-weight: 800;
+}
+
+.map-region-close {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  flex-shrink: 0;
+  border: 0;
+  border-radius: 50%;
+  background: #dce9db;
+  color: #12452a;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.map-region-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 15px;
+  font-size: 12px;
+}
+
+.map-region-risk {
+  padding: 7px 12px;
+  border-radius: 30px;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.map-region-risk.alto {
+  background: #ffe0d6;
+  color: #c2410c;
+}
+
+.map-region-risk.medio {
+  background: #fff0bb;
+  color: #8b5700;
+}
+
+.map-region-risk.baixo {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.map-region-card p {
+  margin: 15px 0;
+  font-size: 13px;
+  line-height: 1.6;
+  color: #3d5145;
+}
+
+.map-region-action {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  min-height: 48px;
+  padding: 12px;
+  border: 0;
+  border-radius: 30px;
+  background: linear-gradient(
+    110deg,
+    #23ba71,
+    #087a43
+  );
+  color: white;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.map-region-action svg {
+  width: 19px;
+  height: 19px;
+}
+
+@keyframes mapCardEnter {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* =====================================
+   ECOGUARD - TELA 8: PERFIL
+===================================== */
+
+.profile-page {
+  display: none;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  overflow: hidden;
+  background: linear-gradient(
+    165deg,
+    #073d2c 0%,
+    #042d21 55%,
+    #021e17 100%
+  );
+  color: #ffffff;
+}
+
+/* CABEÇALHO */
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+  padding: 24px 22px 14px;
+}
+
+.profile-back,
+.profile-settings {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border: 1px solid #ffffff20;
+  border-radius: 50%;
+  background: #ffffff12;
+  color: white;
+  cursor: pointer;
+}
+
+.profile-back svg,
+.profile-settings svg {
+  width: 20px;
+  height: 20px;
+}
+
+.profile-brand {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: #ffffff;
+  font-size: 13px;
+  letter-spacing: 1.5px;
+}
+
+.profile-brand-icon {
+  color: #8cf5a8;
+  font-size: 25px;
+}
+
+/* ÁREA ROLÁVEL */
+
+.profile-scroll {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding: 8px 20px 32px;
+  scrollbar-width: none;
+}
+
+.profile-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.profile-heading {
+  margin-bottom: 22px;
+}
+
+.profile-heading h1 {
+  margin: 0 0 7px;
+  font-size: 27px;
+  font-weight: 800;
+  letter-spacing: -0.7px;
+}
+
+.profile-heading p {
+  margin: 0;
+  color: #b5d4c4;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+/* CARTÃO DA USUÁRIA */
+
+.profile-user-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  padding: 19px 15px;
+  border: none;
+  border-radius: 22px;
+  background: linear-gradient(
+    135deg,
+    #f8faf2,
+    #e8f2e6
+  );
+  color: #073c28;
+  text-align: left;
+  font-family: inherit;
+  cursor: pointer;
+  box-shadow: 0 8px 24px #00000018;
+}
+
+.profile-avatar {
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: #d2ebd9;
+  color: #137648;
+}
+
+.profile-avatar svg {
+  width: 30px;
+  height: 30px;
+}
+
+.profile-user-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.profile-user-info h2 {
+  margin: 0 0 7px;
+  font-size: 19px;
+  font-weight: 800;
+}
+
+.profile-user-info span {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: #638172;
+  font-size: 12px;
+}
+
+.profile-user-info span svg {
+  width: 14px;
+  height: 14px;
+}
+
+.profile-chevron {
+  width: 19px;
+  height: 19px;
+  flex-shrink: 0;
+  color: #5b8570;
+}
+
+/* SEÇÕES */
+
+.profile-section {
+  margin-top: 27px;
+}
+
+.profile-section h3 {
+  margin: 0 0 13px 5px;
+  color: #a5e5b7;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+}
+
+/* OPÇÕES */
+
+.profile-option {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  width: 100%;
+  min-height: 65px;
+  margin-bottom: 10px;
+  padding: 12px 15px;
+  border: none;
+  border-radius: 17px;
+  background: #f3f7ee;
+  color: #153d2b;
+  text-align: left;
+  font-family: inherit;
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease;
+}
+
+.profile-option:active,
+.profile-user-card:active {
+  transform: scale(0.98);
+}
+
+.profile-option:hover {
+  background: #e6f2e6;
+}
+
+.profile-option-icon {
+  display: grid;
+  place-items: center;
+  width: 39px;
+  height: 39px;
+  flex-shrink: 0;
+  border-radius: 13px;
+  background: #dcefe0;
+  color: #14804e;
+}
+
+.profile-option-icon svg {
+  width: 21px;
+  height: 21px;
+}
+
+.profile-option > span {
+  flex: 1;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+/* VERSÃO */
+
+.profile-version {
+  margin: 27px 0 5px;
+  color: #83ac96;
+  font-size: 10px;
+  text-align: center;
+}
+
+/* MENU INFERIOR */
+
+.profile-page .profile-bottom-nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  flex-shrink: 0;
+  width: 100%;
+  margin-top: auto;
+  padding: 12px 8px 16px;
+  background: #052a1e;
+  border-top: 1px solid #ffffff15;
+  z-index: 1000;
+}
+
+.profile-page .profile-bottom-nav .dash-nav-item {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  min-width: 0;
+  border: none;
+  background: transparent;
+  color: #91b5a2;
+  font-family: inherit;
+  font-size: 10px;
+  cursor: pointer;
+}
+
+.profile-page .profile-bottom-nav .dash-nav-item svg {
+  width: 21px;
+  height: 21px;
+}
+
+.profile-page .profile-bottom-nav .dash-nav-item.active {
+  color: #76ef9e;
+}
+
+.profile-page .profile-bottom-nav .dash-nav-item.active span {
+  font-weight: 800;
+}
+
+/* =====================================
+   ECOGUARD - PADRONIZAÇÃO MENU PERFIL
+===================================== */
+
+.profile-page .profile-bottom-nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  gap: 4px;
+  flex-shrink: 0;
+  width: 100%;
+  padding: 7px;
+  margin-top: auto;
+
+  background: #052f21;
+  border: 1px solid #147747;
+  border-radius: 28px;
+
+  z-index: 1000;
+}
+
+.profile-page .profile-bottom-nav .dash-nav-item {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+
+  min-width: 0;
+  min-height: 66px;
+  padding: 8px 4px;
+
+  border: none;
+  border-radius: 23px;
+  background: transparent;
+
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 500;
+
+  cursor: pointer;
+}
+
+.profile-page .profile-bottom-nav .dash-nav-item svg {
+  width: 22px;
+  height: 22px;
+}
+
+.profile-page .profile-bottom-nav .dash-nav-item.active {
+  background: linear-gradient(
+    135deg,
+    #087a40,
+    #006837
+  );
+
+  color: #a3f7b7;
+}
+
+.profile-page .profile-bottom-nav .dash-nav-item.active span {
+  font-weight: 800;
+}
