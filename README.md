@@ -200,8 +200,8 @@ Projeto acadêmico desenvolvido por estudantes da **FIAP**.
 | Integrante | GitHub |
 |---|---|
 | Gabriela Silva | [@bibisep](https://github.com/bibisep) |
-| Duda | [@meduarsc](https://github.com/meduarsc) |
-| Ju | [@juliacruz03](https://github.com/juliacruz03) |
+| Maria Eduarda Campos | [@meduarsc](https://github.com/meduarsc) |
+| Julia Gomes da Cruz | [@juliacruz03](https://github.com/juliacruz03) |
 
 </div>
 
