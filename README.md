@@ -1,4 +1,3 @@
-
 <div align="center">
 
 <img src="assets/logo_oficial.jpeg" alt="Logo ECOGUARD" width="280">
