@@ -1,579 +1,689 @@
-// ======================================
-// ECOGUARD - NAVEGAÇÃO INICIAL
-// ======================================
-
-const welcome = document.querySelector(".welcome");
-const permissions = document.querySelector(".permissions");
-
-const startButton = document.querySelector(".start-button");
-const backButton = document.getElementById("backWelcome");
-const continueButton = document.getElementById("continuePermissions");
-
-function showScreen(screen) {
-  welcome.style.display = "none";
-  permissions.style.display = "none";
-
-  screen.style.display = "flex";
-}
-
-// Tela 1 -> Tela 2
-startButton.addEventListener("click", () => {
-  showScreen(permissions);
-});
-
-// Tela 2 -> Tela 1
-backButton.addEventListener("click", () => {
-  showScreen(welcome);
-});
-
-// Salvar preferências demonstrativas
-const locationPermission = document.getElementById("locationPermission");
-const notificationPermission = document.getElementById("notificationPermission");
-
-locationPermission.checked = localStorage.getItem("ecoguard-location") === "true";
-
-notificationPermission.checked = localStorage.getItem("ecoguard-notifications") === "true";
-
-locationPermission.addEventListener("change", () => {
-  localStorage.setItem("ecoguard-location", locationPermission.checked);
-});
-
-notificationPermission.addEventListener("change", () => {
-  localStorage.setItem("ecoguard-notifications", notificationPermission.checked);
-});
-
-// A terceira tela será conectada depois
-continueButton.addEventListener("click", () => {
-  const permissions = document.getElementById("permissions");
-  const dashboard = document.getElementById("dashboard");
-
-  permissions.style.display = "none";
-  dashboard.style.display = "flex";
-});
-
-// ======================================
-// ECOGUARD - TELA 3 DASHBOARD
-// ======================================
+/* ==========================================
+   ECOGUARD - JAVASCRIPT COMPLETO
+   Navegação, alertas, notificações, mapa e PWA
+========================================== */
 
 document.addEventListener("DOMContentLoaded", () => {
-  const dashboard = document.getElementById("dashboard");
-  const welcome = document.querySelector(".welcome");
-  const permissions = document.querySelector(".permissions");
+  "use strict";
 
-  const continueButton = document.getElementById("continuePermissions");
+  /* ELEMENTOS PRINCIPAIS */
 
-  // Tela 2 -> Tela 3
-  continueButton.addEventListener("click", () => {
-    welcome.style.display = "none";
-    permissions.style.display = "none";
-    dashboard.style.display = "flex";
-    dashboard.scrollTop = 0;
-    window.scrollTo(0, 0);
-  });
+  const $ = (selector) => document.querySelector(selector);
+  const $$ = (selector) => document.querySelectorAll(selector);
+  const byId = (id) => document.getElementById(id);
 
-  // Botões que terão telas próprias futuramente
-  const upcoming = ["dashMenu", "dashBell", "dashLocation", "seeAllAlerts", "heatAlert"];
+  const screens = {
+    welcome: $(".welcome"),
+    permissions: byId("permissions") || $(".permissions"),
+    dashboard: byId("dashboard"),
+    alerts: byId("alertsPage"),
+    detail: byId("alertDetail"),
+    lock: byId("lockScreen"),
+    map: byId("mapPage"),
+    profile: byId("profilePage")
+  };
 
-  upcoming.forEach((id) => {
-    const button = document.getElementById(id);
+  let currentScreen = "welcome";
+  let previousDetailScreen = "alerts";
 
-    button.addEventListener("click", () => {
-      alert("Essa funcionalidade será adicionada nas próximas telas!");
-    });
-  });
+  /* CONTROLE CENTRAL DAS TELAS */
 
-  // Navegação inferior demonstrativa
-});
+  function showScreen(name) {
+    const target = screens[name];
 
-/* =====================================
-   ECOGUARD - NAVEGAÇÃO DAS TELAS 3 E 4
-===================================== */
-
-const telaDashboard = document.getElementById("dashboard");
-const telaAlertas = document.getElementById("alertsPage");
-
-function abrirTelaEcoGuard(tela) {
-  if (!telaDashboard || !telaAlertas) return;
-
-  telaDashboard.style.display = tela === "inicio" ? "flex" : "none";
-
-  telaAlertas.style.display = tela === "alertas" ? "flex" : "none";
-
-  // Volta ao topo quando muda de tela
-  const conteudo = document.querySelector(tela === "inicio" ? ".dashboard-content" : ".alerts-content");
-
-  if (conteudo) conteudo.scrollTop = 0;
-}
-
-// Botões Início e Alertas das duas telas
-document
-  .querySelectorAll(
-    '#dashboard [data-tab="inicio"], ' +
-      '#dashboard [data-tab="alertas"], ' +
-      '#alertsPage [data-tab="inicio"], ' +
-      '#alertsPage [data-tab="alertas"]',
-  )
-  .forEach((botao) => {
-    botao.addEventListener("click", () => {
-      abrirTelaEcoGuard(botao.dataset.tab);
-    });
-  });
-
-// Botão "Ver todos" do dashboard
-document.querySelectorAll(".dash-section-title button").forEach((botao) => {
-  botao.addEventListener("click", () => {
-    abrirTelaEcoGuard("alertas");
-  });
-});
-
-/* =====================================
-   ECOGUARD - DETALHES DO ALERTA
-===================================== */
-
-const alertDetail = document.getElementById("alertDetail");
-const alertsPage = document.getElementById("alertsPage");
-
-// Abrir detalhes do calor extremo
-document.querySelectorAll('[data-alert="calor"]').forEach((card) => {
-  card.addEventListener("click", () => {
-    alertsPage.style.display = "none";
-    alertDetail.style.display = "flex";
-    document.querySelector(".alert-detail-content").scrollTop = 0;
-  });
-});
-
-// Voltar para a lista de alertas
-document.getElementById("detailBack").addEventListener("click", () => {
-  alertDetail.style.display = "none";
-  alertsPage.style.display = "flex";
-});
-
-// Simular ativação de alertas
-document.getElementById("activateAlert").addEventListener("click", function () {
-  this.querySelector("span").textContent = "Alertas ativados!";
-  this.disabled = true;
-  this.style.opacity = "0.85";
-});
-
-/* =====================================
-   ECOGUARD - SIMULAÇÃO DE NOTIFICAÇÃO
-===================================== */
-
-const ecoLockScreen = document.getElementById("lockScreen");
-const ecoNotification = document.getElementById("ecoNotification");
-
-let ecoIdleTimer;
-let ecoNotificationTimer;
-let ecoSimulationShown = false;
-
-function startEcoIdleTimer() {
-  clearTimeout(ecoIdleTimer);
-
-  if (ecoSimulationShown) return;
-
-  ecoIdleTimer = setTimeout(() => {
-    // Simulação exibida apenas no Dashboard
-    const dashboard = document.getElementById("dashboard");
-
-    if (!dashboard || getComputedStyle(dashboard).display === "none") {
+    if (!target) {
+      console.error("ECOGUARD: tela não encontrada:", name);
       return;
     }
 
-    ecoSimulationShown = true;
-
-    dashboard.style.display = "none";
-    ecoLockScreen.style.display = "block";
-
-    ecoNotification.classList.remove("show");
-
-    // Notificação aparece após a tela bloquear
-    ecoNotificationTimer = setTimeout(() => {
-      ecoNotification.classList.add("show");
-    }, 1200);
-  }, 15000);
-}
-
-// Reinicia a contagem quando a pessoa interage
-["pointerdown", "keydown", "scroll"].forEach((eventName) => {
-  document.addEventListener(
-    eventName,
-    () => {
-      if (!ecoSimulationShown) {
-        startEcoIdleTimer();
+    Object.values(screens).forEach((screen) => {
+      if (screen) {
+        screen.style.display = "none";
       }
-    },
-    { passive: true },
+    });
+
+    target.style.display = "flex";
+    currentScreen = name;
+
+    const scrollArea = target.querySelector(
+      ".dashboard-content, " +
+      ".alerts-content, " +
+      ".alert-detail-content, " +
+      ".map-scroll, " +
+      ".profile-scroll"
+    );
+
+    if (scrollArea) {
+      scrollArea.scrollTop = 0;
+    }
+
+    window.scrollTo(0, 0);
+
+    if (name === "dashboard") {
+      startEcoIdleTimer();
+    } else {
+      clearTimeout(ecoIdleTimer);
+    }
+
+    if (name === "map") {
+      requestAnimationFrame(() => {
+        initializeEcoMap();
+
+        if (ecoMap) {
+          ecoMap.invalidateSize();
+        }
+      });
+    }
+
+    updateNavigation(name);
+  }
+
+  function updateNavigation(name) {
+    const tabNames = {
+      dashboard: "inicio",
+      alerts: "alertas",
+      map: "mapa",
+      profile: "perfil"
+    };
+
+    const activeTab = tabNames[name];
+
+    $$("[data-tab]").forEach((button) => {
+      const active = button.dataset.tab === activeTab;
+
+      button.classList.toggle(
+        "active",
+        Boolean(activeTab && active)
+      );
+
+      if (activeTab) {
+        if (active) {
+          button.setAttribute("aria-current", "page");
+        } else {
+          button.removeAttribute("aria-current");
+        }
+      }
+    });
+  }
+
+  /* ========================================
+     TELA 1 - BOAS-VINDAS
+  ======================================== */
+
+  $(".start-button")?.addEventListener("click", () => {
+    showScreen("permissions");
+  });
+
+  /* ========================================
+     TELA 2 - PERMISSÕES
+  ======================================== */
+
+  const locationPermission = byId("locationPermission");
+  const notificationPermission = byId("notificationPermission");
+
+  function readPreference(key) {
+    try {
+      return localStorage.getItem(key) === "true";
+    } catch (error) {
+      return false;
+    }
+  }
+
+  function savePreference(key, value) {
+    try {
+      localStorage.setItem(key, String(value));
+    } catch (error) {
+      console.warn("Não foi possível salvar a preferência.", error);
+    }
+  }
+
+  if (locationPermission) {
+    locationPermission.checked = readPreference(
+      "ecoguard-location"
+    );
+
+    locationPermission.addEventListener("change", () => {
+      savePreference(
+        "ecoguard-location",
+        locationPermission.checked
+      );
+    });
+  }
+
+  if (notificationPermission) {
+    notificationPermission.checked = readPreference(
+      "ecoguard-notifications"
+    );
+
+    notificationPermission.addEventListener("change", () => {
+      savePreference(
+        "ecoguard-notifications",
+        notificationPermission.checked
+      );
+    });
+  }
+
+  byId("backWelcome")?.addEventListener("click", () => {
+    showScreen("welcome");
+  });
+
+  byId("continuePermissions")?.addEventListener(
+    "click",
+    () => {
+      showScreen("dashboard");
+    }
   );
-});
 
-// Inicia a contagem
-startEcoIdleTimer();
+  /* NAVEGAÇÃO INFERIOR DAS TELAS */
 
-// Ao tocar na notificação, abre os detalhes
-ecoNotification.addEventListener("click", () => {
-  clearTimeout(ecoNotificationTimer);
+  $$("[data-tab]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const tab = button.dataset.tab;
 
-  ecoLockScreen.style.display = "none";
-  document.getElementById("alertDetail").style.display = "flex";
+      const destinations = {
+        inicio: "dashboard",
+        alertas: "alerts",
+        mapa: "map",
+        perfil: "profile"
+      };
 
-  const detailContent = document.querySelector(".alert-detail-content");
+      if (destinations[tab]) {
+        showScreen(destinations[tab]);
+      }
+    });
+  });
 
-  if (detailContent) detailContent.scrollTop = 0;
-});
+  /* ========================================
+     TELA 3 - DASHBOARD
+  ======================================== */
 
-/* =====================================
-   ECOGUARD - HORÁRIO DE BRASÍLIA
-===================================== */
+  byId("seeAllAlerts")?.addEventListener("click", () => {
+    showScreen("alerts");
+  });
 
-function atualizarHorarioBrasilia() {
-  const agora = new Date();
+  $$(".dash-section-title button").forEach((button) => {
+    if (button.id === "seeAllAlerts") return;
 
-  const horario = new Intl.DateTimeFormat("pt-BR", {
-    timeZone: "America/Sao_Paulo",
-    hour: "2-digit",
-    minute: "2-digit",
-    hour12: false,
-  }).format(agora);
+    button.addEventListener("click", () => {
+      showScreen("alerts");
+    });
+  });
 
-  const data = new Intl.DateTimeFormat("pt-BR", {
-    timeZone: "America/Sao_Paulo",
-    weekday: "short",
-    day: "numeric",
-    month: "short",
-  }).format(agora);
+  byId("dashBell")?.addEventListener("click", () => {
+    showScreen("alerts");
+  });
 
-  const relogio = document.getElementById("lockTime");
-  const calendario = document.getElementById("lockDate");
+  byId("dashMenu")?.addEventListener("click", () => {
+    showScreen("profile");
+  });
 
-  if (relogio) {
-    relogio.textContent = horario;
+  byId("dashLocation")?.addEventListener("click", () => {
+    showScreen("map");
+  });
+
+  /* ========================================
+     TELA 4 - ALERTAS AMBIENTAIS
+  ======================================== */
+
+  function openAlertDetail(origin = currentScreen) {
+    previousDetailScreen =
+      origin === "lock" ? "dashboard" : origin;
+
+    showScreen("detail");
   }
 
-  if (calendario) {
-    calendario.textContent = data.replace("-feira", "").replace(/\./g, "");
+  $$('[data-alert="calor"]').forEach((card) => {
+    card.addEventListener("click", () => {
+      openAlertDetail();
+    });
+  });
+
+  byId("heatAlert")?.addEventListener("click", () => {
+    openAlertDetail();
+  });
+
+  /* ========================================
+     TELA 5 - DETALHES DO ALERTA
+  ======================================== */
+
+  byId("detailBack")?.addEventListener("click", () => {
+    const allowed = ["dashboard", "alerts", "map"];
+
+    const destination = allowed.includes(previousDetailScreen)
+      ? previousDetailScreen
+      : "alerts";
+
+    showScreen(destination);
+  });
+
+  const activateAlertButton = byId("activateAlert");
+
+  activateAlertButton?.addEventListener(
+    "click",
+    async () => {
+      // A simulação funciona independentemente
+      // da permissão de notificações do sistema.
+
+      savePreference("ecoguard-notifications", true);
+
+      if (notificationPermission) {
+        notificationPermission.checked = true;
+      }
+
+      const label = activateAlertButton.querySelector("span");
+
+      if (label) {
+        label.textContent = "Alertas ativados!";
+      }
+
+      activateAlertButton.disabled = true;
+      activateAlertButton.style.opacity = "0.85";
+
+      // Solicitação real de permissão, quando suportada.
+      // O navegador pode negar ou não oferecer o recurso.
+
+      if (
+        "Notification" in window &&
+        Notification.permission === "default" &&
+        window.isSecureContext
+      ) {
+        try {
+          const result = await Notification.requestPermission();
+
+          console.log(
+            "Permissão de notificações:",
+            result
+          );
+        } catch (error) {
+          console.warn(
+            "Permissão de notificações indisponível:",
+            error
+          );
+        }
+      }
+    }
+  );
+
+  /* ========================================
+     TELA 6 - NOTIFICAÇÃO ESTILO IPHONE
+  ======================================== */
+
+  const ecoNotification = byId("ecoNotification");
+
+  let ecoIdleTimer = null;
+  let ecoNotificationTimer = null;
+  let ecoSimulationShown = false;
+
+  function startEcoIdleTimer() {
+    clearTimeout(ecoIdleTimer);
+
+    if (ecoSimulationShown) return;
+    if (currentScreen !== "dashboard") return;
+
+    ecoIdleTimer = setTimeout(() => {
+      if (currentScreen !== "dashboard") return;
+
+      ecoSimulationShown = true;
+
+      ecoNotification?.classList.remove("show");
+
+      showScreen("lock");
+
+      clearTimeout(ecoNotificationTimer);
+
+      ecoNotificationTimer = setTimeout(() => {
+        if (currentScreen === "lock") {
+          ecoNotification?.classList.add("show");
+        }
+      }, 1200);
+    }, 15000);
   }
-}
 
-// Atualiza imediatamente
-atualizarHorarioBrasilia();
+  /* Reiniciar a contagem quando houver interação */
 
-// Atualiza automaticamente a cada segundo
-setInterval(atualizarHorarioBrasilia, 1000);
+  ["pointerdown", "keydown", "scroll"].forEach(
+    (eventName) => {
+      document.addEventListener(
+        eventName,
+        () => {
+          if (
+            currentScreen === "dashboard" &&
+            !ecoSimulationShown
+          ) {
+            startEcoIdleTimer();
+          }
+        },
+        { passive: true }
+      );
+    }
+  );
 
-/* =====================================
-   ECOGUARD - MAPA DE RISCOS
-===================================== */
+  /* Abrir detalhes ao tocar na notificação */
 
-let ecoMap = null;
+  ecoNotification?.addEventListener("click", () => {
+    clearTimeout(ecoNotificationTimer);
+    openAlertDetail("lock");
+  });
 
-function iniciarMapaEcoGuard() {
-  if (ecoMap) {
-    ecoMap.invalidateSize();
-    return;
+  /* RELÓGIO E DATA DE BRASÍLIA */
+
+  function updateBrasiliaClock() {
+    const now = new Date();
+
+    const time = new Intl.DateTimeFormat("pt-BR", {
+      timeZone: "America/Sao_Paulo",
+      hour: "2-digit",
+      minute: "2-digit",
+      hour12: false
+    }).format(now);
+
+    const date = new Intl.DateTimeFormat("pt-BR", {
+      timeZone: "America/Sao_Paulo",
+      weekday: "long",
+      day: "numeric",
+      month: "long"
+    }).format(now);
+
+    const clockElement = byId("lockTime");
+    const dateElement = byId("lockDate");
+
+    if (clockElement) {
+      clockElement.textContent = time;
+    }
+
+    if (dateElement) {
+      dateElement.textContent =
+        date.charAt(0).toUpperCase() + date.slice(1);
+    }
   }
 
-  if (typeof L === "undefined") {
-    console.error("Leaflet não foi carregado.");
-    return;
-  }
+  updateBrasiliaClock();
+  setInterval(updateBrasiliaClock, 1000);
 
-  ecoMap = L.map("ecoRiskMap", {
-    zoomControl: false,
-  }).setView([-23.5505, -46.6333], 11);
+  /* ========================================
+     TELA 7 - MAPA DE RISCOS
+  ======================================== */
 
-  L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
-    attribution: "&copy; OpenStreetMap contributors",
-    maxZoom: 19,
-  }).addTo(ecoMap);
+  let ecoMap = null;
 
-  L.control
-    .zoom({
-      position: "bottomright",
-    })
-    .addTo(ecoMap);
+  // Dados fictícios para demonstração acadêmica.
+  // Não representam medições ambientais em tempo real.
 
-  // Regiões demonstrativas
-  const regioes = [
+  const ecoRegions = [
     {
       nome: "Sé",
       lat: -23.5505,
       lng: -46.6333,
       cor: "#ef4444",
-      risco: "Alto",
+      risco: "Alto"
     },
     {
       nome: "Santana",
       lat: -23.502,
       lng: -46.625,
       cor: "#f97316",
-      risco: "Médio",
+      risco: "Médio"
     },
     {
       nome: "Lapa",
       lat: -23.523,
       lng: -46.705,
       cor: "#eab308",
-      risco: "Baixo",
+      risco: "Baixo"
     },
     {
       nome: "Moema",
       lat: -23.602,
       lng: -46.666,
       cor: "#eab308",
-      risco: "Baixo",
+      risco: "Baixo"
     },
     {
       nome: "Vila Mariana",
       lat: -23.587,
       lng: -46.635,
       cor: "#f97316",
-      risco: "Médio",
-    },
+      risco: "Médio"
+    }
   ];
 
-  regioes.forEach((regiao) => {
-    const marcador = L.circleMarker([regiao.lat, regiao.lng], {
-      radius: 14,
-      color: "#ffffff",
-      weight: 2,
-      fillColor: regiao.cor,
-      fillOpacity: 0.9,
+  const ecoRegionData = {
+    Alto: {
+      tipo: "Calor extremo",
+      descricao:
+        "Temperaturas elevadas podem representar riscos à saúde. Consulte as orientações preventivas."
+    },
+    Médio: {
+      tipo: "Atenção ambiental",
+      descricao:
+        "A região apresenta condições que merecem atenção. Acompanhe os avisos preventivos."
+    },
+    Baixo: {
+      tipo: "Monitoramento preventivo",
+      descricao:
+        "A região apresenta risco demonstrativo baixo. Continue acompanhando as condições ambientais."
+    }
+  };
+
+  function initializeEcoMap() {
+    if (ecoMap) {
+      ecoMap.invalidateSize();
+      return;
+    }
+
+    if (typeof L === "undefined") {
+      console.error(
+        "ECOGUARD: biblioteca Leaflet não carregada."
+      );
+      return;
+    }
+
+    if (!byId("ecoRiskMap")) {
+      console.error(
+        "ECOGUARD: elemento do mapa não encontrado."
+      );
+      return;
+    }
+
+    ecoMap = L.map("ecoRiskMap", {
+      zoomControl: false
+    }).setView([-23.5505, -46.6333], 11);
+
+    L.tileLayer(
+      "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+      {
+        attribution: "&copy; OpenStreetMap contributors",
+        maxZoom: 19
+      }
+    ).addTo(ecoMap);
+
+    L.control.zoom({
+      position: "bottomright"
     }).addTo(ecoMap);
 
-    marcador.on("click", () => {
-      mostrarRegiaoEcoGuard(regiao);
+    ecoRegions.forEach((region) => {
+      const marker = L.circleMarker(
+        [region.lat, region.lng],
+        {
+          radius: 14,
+          color: "#ffffff",
+          weight: 2,
+          fillColor: region.cor,
+          fillOpacity: 0.9
+        }
+      ).addTo(ecoMap);
+
+      marker.bindTooltip(region.nome);
+
+      marker.on("click", () => {
+        showEcoRegion(region);
+      });
     });
-  });
-}
 
-function abrirMapaEcoGuard() {
-  const telas = ["dashboard", "alertsPage", "alertDetail", "mapPage"];
-
-  telas.forEach((id) => {
-    const tela = document.getElementById(id);
-    if (tela) tela.style.display = "none";
-  });
-
-  document.getElementById("mapPage").style.display = "flex";
-
-  requestAnimationFrame(() => {
-    iniciarMapaEcoGuard();
-  });
-}
-
-// Botões Mapa
-document.querySelectorAll('[data-tab="mapa"]').forEach((botao) => {
-  botao.addEventListener("click", abrirMapaEcoGuard);
-});
-
-// Voltar ao Dashboard
-document.getElementById("mapBack").addEventListener("click", () => {
-  document.getElementById("mapPage").style.display = "none";
-  document.getElementById("dashboard").style.display = "flex";
-});
-
-// Botão Início dentro do Mapa
-document.querySelectorAll('#mapPage [data-tab="inicio"]').forEach((botao) => {
-  botao.addEventListener("click", () => {
-    document.getElementById("mapPage").style.display = "none";
-    document.getElementById("dashboard").style.display = "flex";
-  });
-});
-
-// Botão Alertas dentro do Mapa
-document.querySelectorAll('#mapPage [data-tab="alertas"]').forEach((botao) => {
-  botao.addEventListener("click", () => {
-    document.getElementById("mapPage").style.display = "none";
-    document.getElementById("alertsPage").style.display = "flex";
-  });
-});
-
-// Abrir detalhes do calor extremo
-document.getElementById("mapHeatAlert").addEventListener("click", () => {
-  document.getElementById("mapPage").style.display = "none";
-  document.getElementById("alertDetail").style.display = "flex";
-});
-
-
-/* =====================================
-   ECOGUARD - INTERAÇÃO COM REGIÕES
-===================================== */
-
-const ecoRegionCard =
-  document.getElementById("mapRegionCard");
-
-const ecoRegionClose =
-  document.getElementById("mapRegionClose");
-
-const ecoRegionDetails =
-  document.getElementById("mapRegionDetails");
-
-const ecoRegionData = {
-  "Alto": {
-    tipo: "Calor extremo",
-    descricao:
-      "Temperaturas elevadas podem representar riscos à saúde. Consulte as orientações preventivas."
-  },
-
-  "Médio": {
-    tipo: "Atenção ambiental",
-    descricao:
-      "A região apresenta condições que merecem atenção. Acompanhe os avisos preventivos."
-  },
-
-  "Baixo": {
-    tipo: "Monitoramento preventivo",
-    descricao:
-      "A região apresenta risco demonstrativo baixo. Continue acompanhando as condições ambientais."
+    setTimeout(() => {
+      ecoMap?.invalidateSize();
+    }, 150);
   }
-};
 
-function mostrarRegiaoEcoGuard(regiao) {
-  const dados = ecoRegionData[regiao.risco];
+  /* CARTÃO DE DETALHES DO MAPA */
 
-  document.getElementById("mapRegionName")
-    .textContent = regiao.nome + ", São Paulo";
+  const ecoRegionCard = byId("mapRegionCard");
+  const ecoRegionClose = byId("mapRegionClose");
+  const ecoRegionDetails = byId("mapRegionDetails");
 
-  const risco = document.getElementById("mapRegionRisk");
+  function showEcoRegion(region) {
+    const data = ecoRegionData[region.risco];
 
-  risco.textContent = "Risco " + regiao.risco.toLowerCase();
+    if (!data || !ecoRegionCard) return;
 
-  risco.className =
-    "map-region-risk " +
-    (regiao.risco === "Médio"
-      ? "medio"
-      : regiao.risco.toLowerCase());
+    const name = byId("mapRegionName");
+    const risk = byId("mapRegionRisk");
+    const type = byId("mapRegionType");
+    const description = byId("mapRegionDescription");
 
-  document.getElementById("mapRegionType")
-    .textContent = dados.tipo;
+    if (name) {
+      name.textContent = `${region.nome}, São Paulo`;
+    }
 
-  document.getElementById("mapRegionDescription")
-    .textContent = dados.descricao;
+    if (risk) {
+      risk.textContent =
+        `Risco ${region.risco.toLowerCase()}`;
 
-  ecoRegionDetails.hidden = regiao.risco !== "Alto";
+      const riskClass =
+        region.risco === "Médio"
+          ? "medio"
+          : region.risco.toLowerCase();
 
-  ecoRegionCard.hidden = false;
+      risk.className = `map-region-risk ${riskClass}`;
+    }
 
-  // Rola suavemente até o cartão
-  setTimeout(() => {
-    ecoRegionCard.scrollIntoView({
-      behavior: "smooth",
-      block: "nearest"
-    });
-  }, 100);
-}
+    if (type) {
+      type.textContent = data.tipo;
+    }
 
-// Fechar cartão
-ecoRegionClose.addEventListener("click", () => {
-  ecoRegionCard.hidden = true;
-});
+    if (description) {
+      description.textContent = data.descricao;
+    }
 
-// Abrir tela de detalhes do calor extremo
-ecoRegionDetails.addEventListener("click", () => {
-  document.getElementById("mapPage")
-    .style.display = "none";
+    if (ecoRegionDetails) {
+      ecoRegionDetails.hidden =
+        region.risco !== "Alto";
+    }
 
-  document.getElementById("alertDetail")
-    .style.display = "flex";
+    ecoRegionCard.hidden = false;
 
-  const conteudo = document.querySelector(
-    ".alert-detail-content"
-  );
+    setTimeout(() => {
+      if (currentScreen === "map") {
+        ecoRegionCard.scrollIntoView({
+          behavior: "smooth",
+          block: "nearest"
+        });
+      }
+    }, 100);
+  }
 
-  if (conteudo) conteudo.scrollTop = 0;
-});
-
-
-/* =====================================
-   ECOGUARD - TELA 8: PERFIL
-===================================== */
-
-const ecoProfilePage =
-  document.getElementById("profilePage");
-
-function abrirPerfilEcoGuard() {
-  const telas = [
-    "welcome",
-    "permissions",
-    "dashboard",
-    "alertsPage",
-    "alertDetail",
-    "mapPage",
-    "lockScreen"
-  ];
-
-  telas.forEach(id => {
-    const tela = document.getElementById(id);
-
-    if (tela) {
-      tela.style.display = "none";
+  ecoRegionClose?.addEventListener("click", () => {
+    if (ecoRegionCard) {
+      ecoRegionCard.hidden = true;
     }
   });
 
-  // Algumas telas usam classes em vez de IDs
-  document.querySelectorAll(".welcome, .permissions")
-    .forEach(tela => {
-      tela.style.display = "none";
-    });
+  ecoRegionDetails?.addEventListener("click", () => {
+    openAlertDetail("map");
+  });
 
-  ecoProfilePage.style.display = "flex";
+  byId("mapHeatAlert")?.addEventListener("click", () => {
+    openAlertDetail("map");
+  });
 
-  const conteudo = ecoProfilePage.querySelector(
-    ".profile-scroll"
-  );
+  byId("mapBack")?.addEventListener("click", () => {
+    showScreen("dashboard");
+  });
 
-  if (conteudo) conteudo.scrollTop = 0;
-}
+  /* ========================================
+     TELA 8 - PERFIL
+  ======================================== */
 
-// Abrir Perfil a partir de qualquer menu
-document.querySelectorAll('[data-tab="perfil"]')
-  .forEach(botao => {
-    botao.addEventListener(
-      "click",
-      abrirPerfilEcoGuard
+  byId("profileBack")?.addEventListener("click", () => {
+    showScreen("dashboard");
+  });
+
+  function showProfileMessage(message) {
+    window.alert(message);
+  }
+
+  byId("profileEdit")?.addEventListener("click", () => {
+    showProfileMessage(
+      "A edição dos dados pessoais estará disponível em uma próxima versão do ECOGUARD."
     );
   });
 
-// Voltar ao Dashboard
-function voltarInicioDoPerfil() {
-  ecoProfilePage.style.display = "none";
+  byId("profileSettings")?.addEventListener("click", () => {
+    showProfileMessage(
+      "As configurações avançadas estarão disponíveis em uma próxima versão."
+    );
+  });
 
-  const dashboard =
-    document.getElementById("dashboard");
+  byId("profileLocation")?.addEventListener("click", () => {
+    showScreen("map");
+  });
 
-  dashboard.style.display = "flex";
-}
-
-document.getElementById("profileBack")
-  .addEventListener("click", voltarInicioDoPerfil);
-
-// Navegação inferior do Perfil
-document.querySelectorAll(
-  '#profilePage [data-tab="inicio"]'
-).forEach(botao => {
-  botao.addEventListener(
+  byId("profileNotifications")?.addEventListener(
     "click",
-    voltarInicioDoPerfil
+    () => {
+      showScreen("permissions");
+    }
+  );
+
+  byId("profilePrivacy")?.addEventListener("click", () => {
+    showProfileMessage(
+      "O ECOGUARD utiliza preferências locais neste protótipo. Nenhuma conta de usuário ou banco de dados pessoal está conectado."
+    );
+  });
+
+  byId("profileHelp")?.addEventListener("click", () => {
+    showProfileMessage(
+      "ECOGUARD: inteligência climática para o seu bem-estar. Este aplicativo é um protótipo acadêmico."
+    );
+  });
+
+  /* ACESSIBILIDADE - TECLADO */
+
+  document.addEventListener("keydown", (event) => {
+    if (
+      event.key === "Escape" &&
+      currentScreen === "detail"
+    ) {
+      const destination = [
+        "dashboard",
+        "alerts",
+        "map"
+      ].includes(previousDetailScreen)
+        ? previousDetailScreen
+        : "alerts";
+
+      showScreen(destination);
+    }
+
+    if (
+      event.key === "Escape" &&
+      currentScreen === "lock"
+    ) {
+      clearTimeout(ecoNotificationTimer);
+      showScreen("dashboard");
+    }
+  });
+
+  /* INICIALIZAÇÃO */
+
+  showScreen("welcome");
+
+  console.log(
+    "ECOGUARD iniciado! Todas as oito telas foram conectadas."
   );
 });
 
-document.querySelectorAll(
-  '#profilePage [data-tab="alertas"]'
-).forEach(botao => {
-  botao.addEventListener("click", () => {
-    ecoProfilePage.style.display = "none";
-
-    document.getElementById("alertsPage")
-      .style.display = "flex";
-  });
-});
-
-// O botão Mapa já é atendido pela
-// função abrirMapaEcoGuard() existente.
-
-/* =====================================
-   ECOGUARD - REGISTRO DO PWA
-===================================== */
+/* ECOGUARD - REGISTRO DO PWA */
 
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", () => {
@@ -582,7 +692,7 @@ if ("serviceWorker" in navigator) {
       .then(() => {
         console.log("ECOGUARD PWA registrado!");
       })
-      .catch(error => {
+      .catch((error) => {
         console.error(
           "Erro ao registrar Service Worker:",
           error

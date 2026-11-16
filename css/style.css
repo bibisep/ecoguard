@@ -1,8 +1,3 @@
-/* ==========================================
-   ECOGUARD - STYLE.CSS
-   TELAS 1, 2 E 3
-========================================== */
-
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
 :root {
@@ -39,18 +34,14 @@ input:focus-visible + .switch-slider {
   outline-offset: 3px;
 }
 
-/* ==========================================
-   ESTRUTURA PRINCIPAL
-========================================== */
+/* ESTRUTURA PRINCIPAL */
 
 .app {
   width: 100%;
   min-height: 100dvh;
 }
 
-/* ==========================================
-   TELA 1 - BOAS-VINDAS
-========================================== */
+/* TELA 1 - BOAS-VINDAS */
 
 .welcome {
   position: relative;
@@ -58,7 +49,7 @@ input:focus-visible + .switch-slider {
   overflow: hidden;
 
   background-color: #002d2a;
-  background-image: url("../assets/imagens/fotosp.jpg");
+  background-image: url("../assets/fotosp.jpg");
   background-size: cover;
   background-position: center bottom;
   background-repeat: no-repeat;
@@ -102,14 +93,26 @@ input:focus-visible + .switch-slider {
   align-items: center;
 }
 
-/* Logo */
+/* Logo oficial */
 
 .welcome-header {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 16px;
+  width: 100%;
 }
+
+.welcome-official-logo {
+  display: block;
+  width: 100%;
+  max-width: 280px;
+  height: auto;
+  object-fit: contain;
+  background: transparent;
+}
+
+/* Compatibilidade com elementos antigos */
 
 .logo-icon {
   display: flex;
@@ -315,6 +318,20 @@ input:focus-visible + .switch-slider {
 .brand-icon {
   color: #63e64d;
   font-size: 27px;
+}
+
+/* Logo oficial da tela de permissões */
+
+.permissions-brand .brand-icon {
+  display: block;
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  box-shadow: none;
 }
 
 .header-space {
@@ -524,9 +541,7 @@ input:focus-visible + .switch-slider {
   transform: translateX(4px);
 }
 
-/* ==========================================
-   ONDAS DECORATIVAS - TELA 2
-========================================== */
+/* ONDAS DECORATIVAS - TELA 2 */
 
 /* Onda superior */
 
@@ -610,14 +625,11 @@ input:focus-visible + .switch-slider {
 .dashboard {
   display: none;
   position: relative;
-
   width: 100%;
   height: 100dvh;
   min-height: 0;
-
   padding: 0;
   flex-direction: column;
-
   color: white;
 
   background:
@@ -636,18 +648,14 @@ input:focus-visible + .switch-slider {
   overflow: hidden;
 }
 
-/* ==========================================
-   ÁREA ROLÁVEL
-========================================== */
+/* ÁREA ROLÁVEL */
 
 .dashboard-content {
   flex: 1;
   min-height: 0;
   overflow-y: auto;
   overflow-x: hidden;
-
   padding: 35px 20px 25px;
-
   scrollbar-width: none;
   overscroll-behavior: contain;
 }
@@ -656,26 +664,21 @@ input:focus-visible + .switch-slider {
   display: none;
 }
 
-/* ==========================================
-   CABEÇALHO
-========================================== */
+/* CABEÇALHO */
 
 .dash-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 10px;
-
   margin-bottom: 35px;
 }
 
 .dash-icon-btn {
   width: 34px;
   height: 38px;
-
   display: grid;
   place-items: center;
-
   background: transparent;
   border: none;
   color: white;
@@ -691,9 +694,19 @@ input:focus-visible + .switch-slider {
   display: flex;
   align-items: center;
   gap: 7px;
-
   font-size: 18px;
   letter-spacing: -0.6px;
+}
+
+/* Logo oficial ECOGUARD */
+
+.dash-brand .official-brand-icon {
+  display: block;
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  flex-shrink: 0;
+  background: transparent;
 }
 
 .dash-brand svg {
@@ -709,17 +722,13 @@ input:focus-visible + .switch-slider {
   position: absolute;
   right: 0;
   top: 2px;
-
   width: 10px;
   height: 10px;
-
   background: #78e98a;
   border-radius: 50%;
 }
 
-/* ==========================================
-   SAUDAÇÃO
-========================================== */
+/*  SAUDAÇÃO */
 
 .dash-greeting {
   margin-bottom: 26px;
@@ -735,10 +744,8 @@ input:focus-visible + .switch-slider {
   display: flex;
   align-items: center;
   gap: 9px;
-
   border: none;
   background: transparent;
-
   color: white;
   font: inherit;
   font-size: 15px;
@@ -752,6 +759,19 @@ input:focus-visible + .switch-slider {
   color: #91f3a2;
 }
 
+.dash-location .location-chevron {
+  width: 20px;
+  height: 20px;
+  color: #ffffff;
+  margin-left: 2px;
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.dash-location:hover .location-chevron {
+  transform: translateY(3px);
+}
+
 /* ==========================================
    CARTÃO CONDIÇÕES SEGURAS
 ========================================== */
@@ -760,10 +780,8 @@ input:focus-visible + .switch-slider {
   display: flex;
   align-items: center;
   gap: 15px;
-
   min-height: 130px;
   padding: 20px;
-
   border: 1.5px solid #42c85a;
   border-radius: 24px;
 
@@ -805,14 +823,11 @@ input:focus-visible + .switch-slider {
   line-height: 1.5;
 }
 
-/* ==========================================
-   INDICADORES AMBIENTAIS
-========================================== */
+/* INDICADORES AMBIENTAIS */
 
 .dash-indicators {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-
   gap: 12px;
   margin-top: 20px;
 }
@@ -820,10 +835,8 @@ input:focus-visible + .switch-slider {
 .indicator-card {
   min-width: 0;
   min-height: 155px;
-
   padding: 17px 15px;
   border-radius: 23px;
-
   color: #07271a;
 }
 
@@ -847,7 +860,6 @@ input:focus-visible + .switch-slider {
   display: flex;
   justify-content: space-between;
   align-items: center;
-
   height: 33px;
   margin-bottom: 12px;
 }
@@ -871,7 +883,6 @@ input:focus-visible + .switch-slider {
 
 .indicator-card strong {
   display: block;
-
   font-size: 34px;
   font-weight: 800;
   letter-spacing: -1px;
@@ -882,16 +893,13 @@ input:focus-visible + .switch-slider {
   margin-top: 3px;
 }
 
-/* ==========================================
-   ALERTAS RECENTES
-========================================== */
+/* ALERTAS RECENTES */
 
 .dash-section-title {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 8px;
-
   margin: 29px 0 15px;
 }
 
@@ -904,15 +912,12 @@ input:focus-visible + .switch-slider {
   display: flex;
   align-items: center;
   gap: 7px;
-
   background: transparent;
   border: none;
-
   color: #7bea85;
   font: inherit;
   font-size: 12px;
   font-weight: 700;
-
   cursor: pointer;
 }
 
@@ -925,7 +930,6 @@ input:focus-visible + .switch-slider {
   display: flex;
   flex-direction: column;
   gap: 10px;
-
   padding-bottom: 15px;
 }
 
@@ -933,11 +937,9 @@ input:focus-visible + .switch-slider {
   display: flex;
   align-items: center;
   gap: 14px;
-
   width: 100%;
   min-height: 79px;
   padding: 15px;
-
   border: none;
   border-radius: 19px;
 
@@ -956,7 +958,6 @@ input:focus-visible + .switch-slider {
   width: 44px;
   height: 44px;
   flex-shrink: 0;
-
   display: grid;
   place-items: center;
 }
@@ -995,28 +996,21 @@ input:focus-visible + .switch-slider {
 .eco-chevron {
   width: 26px;
   height: 26px;
-
   flex-shrink: 0;
   margin-left: auto;
-
   color: #123b29;
 }
 
-/* ==========================================
-   MENU INFERIOR - CORREÇÃO DEFINITIVA
-========================================== */
+/* MENU INFERIOR */
 
 .dashboard .dash-nav {
   position: relative;
-
   bottom: auto;
   left: auto;
   right: auto;
-
   width: auto;
   max-width: none;
   transform: none;
-
   flex-shrink: 0;
   z-index: 10;
 
@@ -1026,7 +1020,6 @@ input:focus-visible + .switch-slider {
 
   margin: 0 16px 16px;
   padding: 9px 6px;
-
   border: 1px solid #287c4a;
   border-radius: 26px;
 
@@ -1041,22 +1034,17 @@ input:focus-visible + .switch-slider {
 
 .dash-nav-item {
   flex: 1;
-
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 5px;
-
   min-height: 65px;
   padding: 7px 3px;
-
   border: none;
   border-radius: 21px;
-
   background: transparent;
   color: white;
-
   font: inherit;
   font-size: 12px;
   cursor: pointer;
@@ -1078,15 +1066,12 @@ input:focus-visible + .switch-slider {
   font-weight: 700;
 }
 
-/* ==========================================
-   SETAS PADRONIZADAS
-========================================== */
+/* SETAS PADRONIZADAS */
 
 .eco-arrow {
   width: 25px;
   height: 25px;
   flex-shrink: 0;
-
   transition: transform 0.2s ease;
 }
 
@@ -1096,23 +1081,18 @@ input:focus-visible + .switch-slider {
   transform: translateX(4px);
 }
 
-/* ==========================================
-   RESPONSIVIDADE
-========================================== */
+/* RESPONSIVIDADE */
 
 /* Simulação de celular no computador */
 
 @media (min-width: 600px) {
-
   .app {
     width: 390px;
     height: 800px;
     min-height: 0;
-
     margin: 16px auto;
     border: 8px solid #071c16;
     border-radius: 45px;
-
     overflow: hidden;
     background: #00291d;
   }
@@ -1132,13 +1112,11 @@ input:focus-visible + .switch-slider {
   .dashboard {
     height: 100%;
   }
-
 }
 
 /* Celulares menores */
 
 @media (max-width: 360px) {
-
   .dashboard-content {
     padding-left: 14px;
     padding-right: 14px;
@@ -1165,13 +1143,11 @@ input:focus-visible + .switch-slider {
     padding-left: 15px;
     padding-right: 15px;
   }
-
 }
 
 /* Telas baixas */
 
 @media (max-height: 720px) {
-
   .welcome-content {
     padding-top: 45px;
     padding-bottom: 25px;
@@ -1193,21 +1169,6 @@ input:focus-visible + .switch-slider {
   .permissions-list {
     margin-top: 25px;
   }
-
-}
-/* SETA DA LOCALIZAÇÃO - DASHBOARD */
-
-.dash-location .location-chevron {
-  width: 20px;
-  height: 20px;
-  color: #ffffff;
-  margin-left: 2px;
-  flex-shrink: 0;
-  transition: transform 0.2s ease;
-}
-
-.dash-location:hover .location-chevron {
-  transform: translateY(3px);
 }
 
 /* =====================================
@@ -1226,10 +1187,13 @@ input:focus-visible + .switch-slider {
   color: white;
 }
 
+/* Área de conteúdo com rolagem */
+
 .alerts-content {
   flex: 1;
   min-height: 0;
   overflow-y: auto;
+  overflow-x: hidden;
   padding: 35px 20px 25px;
   scrollbar-width: none;
 }
@@ -1237,6 +1201,26 @@ input:focus-visible + .switch-slider {
 .alerts-content::-webkit-scrollbar {
   display: none;
 }
+
+/* Cabeçalho e logo oficial */
+
+.alerts-page .dash-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 35px;
+}
+
+.alerts-page .dash-brand .official-brand-icon {
+  display: block;
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  background: transparent;
+}
+
+/* Título da página */
 
 .alerts-heading {
   margin: 35px 0 30px;
@@ -1253,7 +1237,7 @@ input:focus-visible + .switch-slider {
   line-height: 1.5;
 }
 
-/* Cartões */
+/* CARTÕES DE ALERTA */
 
 .environment-alert {
   display: block;
@@ -1270,17 +1254,37 @@ input:focus-visible + .switch-slider {
   cursor: pointer;
 }
 
+/* Calor extremo */
+
 .heat-alert {
-  background: linear-gradient(120deg, #ffe4ac, #fffaf0 70%);
+  background: linear-gradient(
+    120deg,
+    #ffe4ac,
+    #fffaf0 70%
+  );
 }
+
+/* Qualidade do ar */
 
 .air-alert {
-  background: linear-gradient(120deg, #dcebd9, #ffffff 75%);
+  background: linear-gradient(
+    120deg,
+    #dcebd9,
+    #ffffff 75%
+  );
 }
 
+/* Chuva intensa */
+
 .rain-alert {
-  background: linear-gradient(120deg, #ccecff, #ffffff 75%);
+  background: linear-gradient(
+    120deg,
+    #ccecff,
+    #ffffff 75%
+  );
 }
+
+/* Conteúdo principal dos cartões */
 
 .environment-alert-main {
   display: flex;
@@ -1299,6 +1303,8 @@ input:focus-visible + .switch-slider {
   height: 52px;
 }
 
+/* Cores dos ícones */
+
 .heat-alert .environment-icon {
   color: #e85b16;
 }
@@ -1310,6 +1316,8 @@ input:focus-visible + .switch-slider {
 .rain-alert .environment-icon {
   color: #187eaf;
 }
+
+/* Informações */
 
 .environment-info {
   flex: 1;
@@ -1328,6 +1336,8 @@ input:focus-visible + .switch-slider {
   margin-top: 8px;
 }
 
+/* INDICADORES DE NÍVEL */
+
 .alert-level {
   display: inline-block;
   padding: 5px 12px;
@@ -1336,22 +1346,28 @@ input:focus-visible + .switch-slider {
   font-weight: 800;
 }
 
+/* Risco alto */
+
 .level-high {
   background: #e95a18;
   color: white;
 }
+
+/* Risco moderado */
 
 .level-medium {
   background: #ffdc83;
   color: #17251a;
 }
 
+/* Nível de atenção */
+
 .level-attention {
   background: #94d7ff;
   color: #103044;
 }
 
-/* Rodapé dos cartões */
+/* RODAPÉ DOS CARTÕES */
 
 .environment-meta {
   display: flex;
@@ -1359,12 +1375,13 @@ input:focus-visible + .switch-slider {
   align-items: center;
   gap: 8px;
   padding: 13px 16px;
+
   background: #eaf2e6a8;
   font-size: 11px;
   font-weight: 600;
 }
 
-/* Setas padronizadas */
+/* Setas */
 
 .environment-alert .eco-chevron {
   width: 23px;
@@ -1378,57 +1395,8 @@ input:focus-visible + .switch-slider {
   transform: translateX(3px);
 }
 
-/* Menu fixo dentro da moldura */
+/* MENU INFERIOR DA TELA 4 */
 
-.alerts-page .dash-nav {
-  position: relative;
-  bottom: auto;
-  left: auto;
-  right: auto;
-  width: auto;
-  max-width: none;
-  transform: none;
-  flex-shrink: 0;
-  margin: 0 16px 16px;
-  z-index: 10;
-}
-
-/* Desktop */
-
-@media (min-width: 600px) {
-  .alerts-page {
-    height: 100%;
-  }
-}
-
-/* =====================================
-   ECOGUARD - CORREÇÃO TELA 4
-===================================== */
-
-/* Estrutura da tela */
-.alerts-page {
-  display: none;
-  flex-direction: column;
-  height: 100%;
-  min-height: 0;
-  overflow: hidden;
-}
-
-/* Conteúdo com rolagem */
-.alerts-content {
-  flex: 1;
-  min-height: 0;
-  overflow-y: auto;
-  overflow-x: hidden;
-  padding: 35px 20px 25px;
-  scrollbar-width: none;
-}
-
-.alerts-content::-webkit-scrollbar {
-  display: none;
-}
-
-/* Menu inferior horizontal */
 .alerts-page .dash-nav {
   position: relative;
   bottom: auto;
@@ -1463,6 +1431,7 @@ input:focus-visible + .switch-slider {
 }
 
 /* Botões do menu */
+
 .alerts-page .dash-nav-item {
   flex: 1;
   min-width: 0;
@@ -1485,7 +1454,8 @@ input:focus-visible + .switch-slider {
   cursor: pointer;
 }
 
-/* Ícones */
+/* Ícones do menu */
+
 .alerts-page .dash-nav-item svg {
   width: 25px;
   height: 25px;
@@ -1493,6 +1463,7 @@ input:focus-visible + .switch-slider {
 }
 
 /* Botão Alertas selecionado */
+
 .alerts-page .dash-nav-item.active {
   background: linear-gradient(
     140deg,
@@ -1504,172 +1475,266 @@ input:focus-visible + .switch-slider {
   font-weight: 700;
 }
 
-/* =====================================
-   TELA 5 - DETALHES DO ALERTA
-===================================== */
+/* RESPONSIVIDADE */
+
+@media (min-width: 600px) {
+  .alerts-page {
+    height: 100%;
+  }
+}
+
+@media (max-width: 360px) {
+  .alerts-content {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  .environment-alert-main {
+    padding: 15px 12px;
+    gap: 9px;
+  }
+
+  .environment-icon {
+    width: 43px;
+  }
+
+  .environment-icon svg {
+    width: 40px;
+    height: 40px;
+  }
+
+  .environment-info h2 {
+    font-size: 18px;
+  }
+
+  .environment-meta {
+    font-size: 10px;
+  }
+}
+
+/* TELA 5 - DETALHES DO ALERTA */
 
 .alert-detail {
   display: none;
+  position: relative;
   width: 100%;
   height: 100dvh;
   min-height: 0;
   overflow: hidden;
+
   flex-direction: column;
 
-  background: linear-gradient(
-    165deg,
-    #00291d,
-    #00452f 75%,
-    #dceee0
-  );
-
-  color: white;
+  color: #ffffff;
+  background:
+    radial-gradient(
+      ellipse at 70% 45%,
+      rgba(12, 100, 61, 0.45),
+      transparent 65%
+    ),
+    linear-gradient(
+      160deg,
+      #00291d,
+      #00402c 70%,
+      #00291d
+    );
 }
+
+/* ÁREA ROLÁVEL */
 
 .alert-detail-content {
   flex: 1;
   min-height: 0;
+  width: 100%;
   overflow-y: auto;
   overflow-x: hidden;
+
   padding: 35px 20px 35px;
+
   scrollbar-width: none;
+  overscroll-behavior: contain;
 }
 
 .alert-detail-content::-webkit-scrollbar {
   display: none;
 }
 
-/* Cabeçalho */
+/* CABEÇALHO */
 
 .detail-header {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
+  gap: 10px;
   margin-bottom: 30px;
 }
 
 .detail-back {
-  width: 35px;
-  height: 35px;
-  background: none;
+  width: 38px;
+  height: 38px;
+  padding: 0;
+
+  display: grid;
+  place-items: center;
+
   border: none;
-  color: white;
+  background: transparent;
+  color: #ffffff;
   cursor: pointer;
 }
 
 .detail-back svg {
-  width: 29px;
-  height: 29px;
+  width: 28px;
+  height: 28px;
+  transition: transform 0.2s ease;
+}
+
+.detail-back:hover svg {
+  transform: translateX(-3px);
 }
 
 .detail-brand {
   display: flex;
   align-items: center;
-  gap: 8px;
-  font-size: 19px;
+  justify-content: center;
+  gap: 7px;
+
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: -0.6px;
 }
 
-.detail-leaf {
-  color: #63e64d;
-  font-size: 30px;
+.detail-brand .official-brand-icon {
+  display: block;
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  background: transparent;
 }
 
 .detail-header-space {
-  width: 35px;
+  width: 38px;
 }
 
-/* Localização */
+/* LOCALIZAÇÃO */
 
 .detail-location {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
+
   margin-bottom: 20px;
-  font-size: 17px;
+
+  font-size: 14px;
+  font-weight: 600;
+  color: #e7f7eb;
 }
 
 .detail-location svg {
-  width: 25px;
-  height: 25px;
-  color: #91f3a2;
+  width: 20px;
+  height: 20px;
+  color: #a3f1ad;
 }
 
-/* Banner de calor */
+/* BANNER - CALOR EXTREMO */
 
 .detail-heat-banner {
   position: relative;
+  isolation: isolate;
   display: flex;
   align-items: center;
   gap: 17px;
 
-  min-height: 155px;
-  padding: 25px 20px;
-  border-radius: 24px;
+  min-height: 175px;
+  padding: 24px 19px;
+
   overflow: hidden;
+  border-radius: 25px;
 
   background: linear-gradient(
-    110deg,
-    #f1780e,
-    #db4b0b 55%,
-    #ffb62f
+    120deg,
+    #f59b31,
+    #e96521 60%,
+    #d84818
   );
+
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
 }
 
+/* Ícone do termômetro */
+
 .detail-heat-icon {
-  z-index: 1;
-  width: 58px;
+  position: relative;
+  z-index: 2;
+
+  display: grid;
+  place-items: center;
+
+  width: 67px;
+  height: 67px;
   flex-shrink: 0;
-  color: white;
+
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.18);
+  color: #ffffff;
 }
 
 .detail-heat-icon svg {
-  width: 58px;
-  height: 75px;
+  width: 44px;
+  height: 44px;
 }
+
+/* Texto do banner */
 
 .detail-heat-text {
   position: relative;
-  z-index: 1;
-  border-left: 1px solid #ffffff9c;
-  padding-left: 17px;
+  z-index: 2;
+  min-width: 0;
 }
 
 .detail-heat-text h1 {
   font-size: 26px;
-  line-height: 1.15;
-  margin-bottom: 10px;
+  font-weight: 800;
+  line-height: 1.16;
+  letter-spacing: -0.7px;
+
+  margin-bottom: 12px;
 }
 
 .detail-heat-text span {
   display: inline-block;
-  padding: 7px 15px;
-  border-radius: 999px;
+  padding: 6px 13px;
 
-  background: #fff0ad;
-  color: #8c1b0a;
-  font-size: 14px;
+  border-radius: 999px;
+  background: rgba(120, 27, 7, 0.35);
+
+  font-size: 12px;
   font-weight: 800;
 }
 
+/* Sol decorativo */
+
 .detail-sun {
   position: absolute;
-  right: -20px;
-  top: 10px;
+  z-index: 0;
 
-  width: 125px;
-  height: 125px;
+  width: 165px;
+  height: 165px;
+  right: -65px;
+  top: -55px;
+
   border-radius: 50%;
 
   background: radial-gradient(
     circle,
-    #ffe88e 0%,
-    #ffd05c 40%,
-    #ffc53d80 60%,
+    rgba(255, 230, 134, 0.65) 0%,
+    rgba(255, 200, 77, 0.3) 45%,
     transparent 75%
   );
+
+  pointer-events: none;
 }
 
-/* Temperatura */
+/* TEMPERATURA E NÍVEL DE RISCO */
 
 .detail-temperature {
   display: flex;
@@ -1677,203 +1742,278 @@ input:focus-visible + .switch-slider {
   justify-content: space-between;
   gap: 15px;
 
-  margin-top: 16px;
-  padding: 20px;
-  border-radius: 24px;
+  margin-top: 18px;
+  padding: 22px 19px;
+
+  border-radius: 23px;
 
   background: linear-gradient(
-    120deg,
-    #08653b,
-    #003b29
+    135deg,
+    #ffffff,
+    #fff0d3
   );
 
-  border: 1px solid #227a50;
+  color: #153021;
+}
+
+.detail-temp-value {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  min-width: 0;
 }
 
 .detail-temp-value strong {
-  display: block;
-  font-size: 46px;
+  font-size: 42px;
+  font-weight: 800;
   line-height: 1;
+  letter-spacing: -1.5px;
 }
 
 .detail-temp-value span {
-  font-size: 12px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #526257;
 }
 
 .detail-temp-divider {
   width: 1px;
-  height: 65px;
-  background: #ffffff80;
+  height: 58px;
+  flex-shrink: 0;
+  background: #cbd5c9;
 }
 
 .detail-risk {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 9px;
 }
 
 .detail-risk > span {
-  color: #ffe29b;
-  font-size: 29px;
+  display: grid;
+  place-items: center;
+
+  width: 38px;
+  height: 38px;
+
+  border-radius: 50%;
+  background: #ffe0c5;
+  color: #d95a1e;
+
+  font-size: 25px;
+  font-weight: 800;
 }
 
 .detail-risk p {
-  font-size: 12px;
+  font-size: 11px;
+  color: #526257;
+  margin-bottom: 5px;
 }
 
 .detail-risk strong {
-  color: #ffe29b;
-  font-size: 20px;
+  font-size: 17px;
+  font-weight: 800;
+  color: #d34c1b;
 }
 
-/* Cartões */
+/* ==========================================
+   CARTÕES DE INFORMAÇÃO
+========================================== */
 
 .detail-card {
   display: flex;
+  align-items: flex-start;
   gap: 14px;
-  padding: 20px;
+
   margin-top: 16px;
+  padding: 20px 18px;
 
   border-radius: 22px;
-  color: #10251b;
+
+  background: linear-gradient(
+    135deg,
+    #ffffff,
+    #f1f4e9
+  );
+
+  color: #173023;
 }
 
 .detail-card h2 {
-  font-size: 19px;
-  margin-bottom: 6px;
+  font-size: 17px;
+  font-weight: 800;
+  margin-bottom: 8px;
 }
 
 .detail-card p {
   font-size: 13px;
-  line-height: 1.5;
+  line-height: 1.65;
+  color: #405448;
 }
 
-.situation-card {
-  background: linear-gradient(
-    120deg,
-    #fff1cd,
-    #fffaf0
-  );
+/* SITUAÇÃO */
+
+.detail-card-icon {
+  display: grid;
+  place-items: center;
+
+  width: 43px;
+  height: 43px;
+  flex-shrink: 0;
+
+  border-radius: 13px;
+  background: #e4f0de;
+  color: #087044;
 }
 
 .detail-card-icon svg {
-  width: 30px;
-  height: 30px;
-  color: #07512f;
+  width: 25px;
+  height: 25px;
 }
 
-/* Cuidados */
+/* CUIDADOS RECOMENDADOS */
 
 .care-card {
   display: block;
-  background: #ffffff;
 }
 
 .care-heading {
   display: flex;
   align-items: center;
-  gap: 12px;
-  margin-bottom: 15px;
+  gap: 11px;
+  margin-bottom: 14px;
 }
 
 .care-heading svg {
-  width: 30px;
-  height: 30px;
-  color: #07512f;
+  width: 29px;
+  height: 29px;
   flex-shrink: 0;
+  color: #087044;
+}
+
+.care-heading h2 {
+  margin: 0;
 }
 
 .care-list {
   list-style: none;
   padding: 0;
+  margin: 0;
 }
 
 .care-list li {
   position: relative;
-  padding-left: 31px;
+  padding: 0 0 0 23px;
   margin-bottom: 12px;
+
   font-size: 13px;
-  line-height: 1.5;
+  line-height: 1.55;
+  color: #405448;
+}
+
+.care-list li:last-child {
+  margin-bottom: 0;
 }
 
 .care-list li::before {
-  content: "✓";
+  content: "";
   position: absolute;
-  left: 0;
-  top: 0;
+  left: 2px;
+  top: 7px;
 
-  width: 21px;
-  height: 21px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
 
-  display: grid;
-  place-items: center;
-
-  background: #1ca23c;
-  color: white;
-  font-weight: 800;
+  background: #21a760;
+  box-shadow: 0 0 0 3px #dff2e4;
 }
 
-/* Fonte */
+/* FONTE DAS INFORMAÇÕES */
 
 .source-card {
   align-items: center;
-  background: #e8f4e9;
 }
 
 .source-card > svg:first-child {
-  width: 30px;
-  height: 30px;
+  width: 29px;
+  height: 29px;
   flex-shrink: 0;
-  color: #07512f;
+  color: #087044;
 }
 
 .source-card > div {
   flex: 1;
+  min-width: 0;
+}
+
+.source-card h2 {
+  margin-bottom: 5px;
+}
+
+.source-card p {
+  font-size: 12px;
 }
 
 .source-external {
-  width: 23px;
-  height: 23px;
+  width: 21px;
+  height: 21px;
   flex-shrink: 0;
-  color: #07512f;
+  color: #5e7866;
 }
 
-/* Botão ativar alertas */
+/* BOTÃO ATIVAR ALERTAS */
 
 .activate-alert-btn {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 10px;
+  justify-content: center;
+  gap: 11px;
 
   width: 100%;
-  min-height: 65px;
-  margin-top: 22px;
-  padding: 14px 18px;
+  min-height: 62px;
+
+  margin-top: 24px;
+  padding: 14px 16px;
 
   border: none;
   border-radius: 999px;
 
   background: linear-gradient(
     110deg,
-    #139d4d,
-    #005b30
+    #30c676,
+    #159356
   );
 
-  color: white;
+  color: #ffffff;
+  font-family: inherit;
   font-size: 14px;
-  font-weight: 700;
+  font-weight: 800;
+
   cursor: pointer;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.activate-alert-btn span {
+  flex: 0 1 auto;
 }
 
 .activate-alert-btn svg {
-  width: 25px;
-  height: 25px;
+  width: 23px;
+  height: 23px;
   flex-shrink: 0;
 }
 
-/* Moldura desktop */
+.activate-alert-btn:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.06);
+}
+
+.activate-alert-btn:active {
+  transform: scale(0.98);
+}
+
+/* RESPONSIVIDADE - TELA 5 */
 
 @media (min-width: 600px) {
   .alert-detail {
@@ -1881,24 +2021,71 @@ input:focus-visible + .switch-slider {
   }
 }
 
-/* =====================================
-   TELA 6 - BLOQUEIO DO CELULAR
-===================================== */
+@media (max-width: 360px) {
+  .alert-detail-content {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  .detail-heat-banner {
+    gap: 11px;
+    padding: 20px 14px;
+  }
+
+  .detail-heat-icon {
+    width: 55px;
+    height: 55px;
+  }
+
+  .detail-heat-icon svg {
+    width: 36px;
+    height: 36px;
+  }
+
+  .detail-heat-text h1 {
+    font-size: 22px;
+  }
+
+  .detail-temp-value strong {
+    font-size: 35px;
+  }
+
+  .detail-risk strong {
+    font-size: 15px;
+  }
+
+  .detail-temperature {
+    padding: 18px 13px;
+    gap: 10px;
+  }
+
+  .activate-alert-btn {
+    font-size: 12px;
+    gap: 7px;
+  }
+}
+
+/* TELA 6 - NOTIFICAÇÃO AUTOMÁTICA SIMULAÇÃO DE TELA BLOQUEADA DO IPHONE */
 
 .lock-screen {
   display: none;
   position: relative;
+  isolation: isolate;
+  flex-direction: column;
   width: 100%;
-  height: 100%;
+  height: 100dvh;
   min-height: 0;
   overflow: hidden;
   background: #002d20;
-  color: white;
+  color: #ffffff;
 }
+
+/* PAPEL DE PAREDE */
 
 .lock-wallpaper {
   position: absolute;
   inset: 0;
+  z-index: 0;
 
   background:
     radial-gradient(
@@ -1917,228 +2104,58 @@ input:focus-visible + .switch-slider {
       #00412a 65%,
       #001e14
     );
+
+  pointer-events: none;
 }
 
 .lock-wallpaper::after {
   content: "";
   position: absolute;
   inset: 0;
+
   background: linear-gradient(
     180deg,
-    #00170b35,
+    rgba(0, 23, 11, 0.21),
     transparent 40%,
-    #00190a40
+    rgba(0, 25, 10, 0.25)
   );
 }
+
+/* CONTEÚDO DA TELA BLOQUEADA */
 
 .lock-content {
   position: relative;
   z-index: 1;
+
   display: flex;
   flex-direction: column;
+
+  width: 100%;
   height: 100%;
-  padding: 25px 25px 15px;
+  min-height: 0;
+
+  padding:
+    max(22px, env(safe-area-inset-top))
+    20px
+    max(12px, env(safe-area-inset-bottom));
+
+  box-sizing: border-box;
 }
 
-/* Barra superior */
+/* BARRA SUPERIOR DO IPHONE */
 
 .lock-status {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+
+  width: 100%;
+  min-height: 24px;
+
+  color: #ffffff;
   font-size: 15px;
   font-weight: 600;
-}
-
-.lock-status-icons {
-  display: flex;
-  align-items: center;
-  gap: 7px;
-}
-
-.lock-status-icons svg {
-  width: 19px;
-  height: 19px;
-}
-
-.lock-battery {
-  width: 23px;
-  height: 12px;
-  border: 2px solid white;
-  border-radius: 3px;
-  background: white;
-}
-
-/* Cadeado */
-
-.lock-symbol {
-  display: flex;
-  justify-content: center;
-  margin-top: 48px;
-}
-
-.lock-symbol svg {
-  width: 37px;
-  height: 37px;
-}
-
-/* Relógio */
-
-.lock-clock {
-  text-align: center;
-  margin-top: 12px;
-}
-
-.lock-clock h1 {
-  font-size: clamp(72px, 22vw, 105px);
-  font-weight: 250;
-  line-height: 1.1;
-  letter-spacing: -4px;
-}
-
-.lock-clock p {
-  font-size: 25px;
-  font-weight: 400;
-  margin-top: 4px;
-}
-
-/* Notificação */
-
-.eco-notification {
-  display: block;
-  width: 100%;
-  margin-top: 42px;
-  padding: 18px;
-
-  border: 1px solid #ffffff90;
-  border-radius: 25px;
-
-  background: linear-gradient(
-    125deg,
-    #f4f7e9f5,
-    #dbe8d0f5
-  );
-
-  color: #092c1b;
-  text-align: left;
-  font-family: inherit;
-  cursor: pointer;
-
-  opacity: 0;
-  transform: translateY(-25px);
-
-  transition:
-    opacity 0.6s ease,
-    transform 0.6s ease;
-}
-
-.eco-notification.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.notification-header {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 12px;
-}
-
-.notification-logo {
-  width: 43px;
-  height: 43px;
-  display: grid;
-  place-items: center;
-
-  border-radius: 11px;
-  background: #005b35;
-  color: #9affb5;
-}
-
-.notification-logo svg {
-  width: 29px;
-  height: 29px;
-}
-
-.notification-header strong {
-  font-size: 17px;
-  flex: 1;
-}
-
-.notification-header > span {
-  color: #555;
-  font-size: 13px;
-}
-
-.eco-notification h2 {
-  font-size: 20px;
-  line-height: 1.2;
-  margin-bottom: 8px;
-}
-
-.eco-notification p {
-  font-size: 16px;
-  line-height: 1.45;
-}
-
-/* Ícones inferiores */
-
-.lock-shortcuts {
-  display: flex;
-  justify-content: space-between;
-  margin-top: auto;
-  padding: 0 15px 30px;
-}
-
-.lock-shortcut {
-  width: 55px;
-  height: 55px;
-  border-radius: 50%;
-
-  display: grid;
-  place-items: center;
-
-  background: #ffffff25;
-  backdrop-filter: blur(12px);
-}
-
-.lock-shortcut svg {
-  width: 25px;
-  height: 25px;
-}
-
-.lock-home-indicator {
-  width: 110px;
-  height: 5px;
-  margin: 0 auto;
-  border-radius: 999px;
-  background: white;
-}
-
-@media (max-height: 680px) {
-  .lock-symbol {
-    margin-top: 25px;
-  }
-
-  .eco-notification {
-    margin-top: 25px;
-  }
-
-  .lock-clock h1 {
-    font-size: 72px;
-  }
-}
-
-/* =====================================
-   TELA 6 - ÍCONES DO IPHONE
-===================================== */
-
-.lock-status {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  color: #ffffff;
 }
 
 .lock-carrier {
@@ -2152,6 +2169,11 @@ input:focus-visible + .switch-slider {
   align-items: center;
   justify-content: flex-end;
   gap: 6px;
+}
+
+.lock-status-icons svg {
+  display: block;
+  flex-shrink: 0;
 }
 
 .lock-status-icons .status-signal {
@@ -2169,9 +2191,277 @@ input:focus-visible + .switch-slider {
   height: 16px;
 }
 
-/* Oculta a bateria antiga, se existir */
-.lock-status-icons .lock-battery {
-  display: none;
+/* CADEADO SUPERIOR */
+
+.lock-symbol {
+  display: flex;
+  justify-content: center;
+  flex-shrink: 0;
+
+  margin-top: clamp(18px, 5vh, 48px);
+}
+
+.lock-symbol svg {
+  width: 32px;
+  height: 32px;
+}
+
+/* RELÓGIO E DATA */
+
+.lock-clock {
+  flex-shrink: 0;
+  margin-top: 12px;
+  text-align: center;
+}
+
+.lock-clock h1 {
+  margin: 0;
+
+  font-size: clamp(60px, 17vw, 105px);
+  font-weight: 300;
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+  font-variant-numeric: tabular-nums;
+}
+
+.lock-clock p {
+  margin-top: 5px;
+  font-size: clamp(17px, 5vw, 25px);
+  font-weight: 400;
+  line-height: 1.3;
+}
+
+/* NOTIFICAÇÃO ECOGUARD */
+
+.eco-notification {
+  display: block;
+  flex-shrink: 0;
+
+  width: 100%;
+  max-width: 560px;
+
+  margin:
+    clamp(22px, 5vh, 42px)
+    auto
+    0;
+
+  padding: clamp(14px, 4vw, 18px);
+
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 25px;
+
+  background: linear-gradient(
+    125deg,
+    rgba(244, 247, 233, 0.97),
+    rgba(219, 232, 208, 0.97)
+  );
+
+  color: #092c1b;
+  text-align: left;
+  font-family: inherit;
+  cursor: pointer;
+
+  opacity: 0;
+  transform: translateY(-25px);
+
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18);
+
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease;
+}
+
+/* Exibida pelo JavaScript */
+
+.eco-notification.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Cabeçalho da notificação */
+
+.notification-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+/* Ícone oficial ECOGUARD */
+
+.notification-logo {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+
+  width: 43px;
+  height: 43px;
+
+  border-radius: 11px;
+  overflow: hidden;
+
+  background: transparent;
+}
+
+.notification-logo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.notification-header strong {
+  flex: 1;
+  min-width: 0;
+
+  font-size: 17px;
+  font-weight: 800;
+}
+
+.notification-header > span {
+  flex-shrink: 0;
+  color: #555555;
+  font-size: 13px;
+}
+
+/* Texto da notificação */
+
+.eco-notification h2 {
+  margin-bottom: 8px;
+
+  font-size: 20px;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.eco-notification p {
+  font-size: 16px;
+  line-height: 1.45;
+}
+
+/* ÍCONES INFERIORES */
+
+.lock-shortcuts {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+
+  width: 100%;
+  margin-top: auto;
+
+  padding: 20px 15px 24px;
+}
+
+.lock-shortcut {
+  display: grid;
+  place-items: center;
+
+  width: 55px;
+  height: 55px;
+
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.lock-shortcut svg {
+  width: 25px;
+  height: 25px;
+  color: #ffffff;
+}
+
+/* Barra inferior do iPhone */
+
+.lock-home-indicator {
+  flex-shrink: 0;
+
+  width: 110px;
+  height: 5px;
+
+  margin: 0 auto;
+
+  border-radius: 999px;
+  background: #ffffff;
+}
+
+/* CORREÇÃO PARA SIMULAÇÃO NO COMPUTADOR */
+
+@media (min-width: 600px) {
+  .lock-screen {
+    height: 100%;
+    min-height: 0;
+  }
+
+  .lock-content {
+    height: 100%;
+    min-height: 0;
+  }
+
+  .lock-clock h1 {
+    font-size: 78px;
+  }
+}
+
+/* TELAS BAIXAS */
+
+@media (max-height: 700px) {
+  .lock-symbol {
+    margin-top: 18px;
+  }
+
+  .lock-clock {
+    margin-top: 8px;
+  }
+
+  .lock-clock h1 {
+    font-size: clamp(58px, 15vw, 78px);
+  }
+
+  .eco-notification {
+    margin-top: 18px;
+  }
+
+  .lock-shortcuts {
+    padding-top: 12px;
+    padding-bottom: 15px;
+  }
+}
+
+/* CELULARES PEQUENOS */
+
+@media (max-width: 360px) {
+  .lock-content {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  .eco-notification {
+    border-radius: 20px;
+  }
+
+  .eco-notification h2 {
+    font-size: 18px;
+  }
+
+  .eco-notification p {
+    font-size: 14px;
+  }
+
+  .lock-shortcut {
+    width: 48px;
+    height: 48px;
+  }
+}
+
+/* ACESSIBILIDADE */
+
+@media (prefers-reduced-motion: reduce) {
+  .eco-notification {
+    transition: none;
+  }
 }
 
 /* =====================================
@@ -2220,9 +2510,12 @@ input:focus-visible + .switch-slider {
   font-size: 17px;
 }
 
-.map-brand span {
-  color: #63e64d;
-  font-size: 28px;
+.map-brand .official-brand-icon {
+  display: block;
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  background: transparent;
 }
 
 .map-header-spacer {
@@ -2281,9 +2574,10 @@ input:focus-visible + .switch-slider {
   margin-left: auto;
 }
 
-/* MAPA */
+/* MAPA INTERATIVO - LEAFLET */
 
 .map-container {
+  position: relative;
   width: 100%;
   height: 305px;
   border-radius: 19px;
@@ -2298,7 +2592,53 @@ input:focus-visible + .switch-slider {
   z-index: 1;
 }
 
-/* LEGENDA */
+/* Controles de zoom */
+
+#ecoRiskMap .leaflet-control-zoom {
+  border: none;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 14px #00000025;
+}
+
+#ecoRiskMap .leaflet-control-zoom a {
+  background: #ffffff;
+  color: #075338;
+  border-color: #e1e8e1;
+}
+
+#ecoRiskMap .leaflet-control-zoom a:hover {
+  background: #e9f4e8;
+}
+
+/* Pop-ups dos marcadores */
+
+#ecoRiskMap .leaflet-popup-content-wrapper {
+  border-radius: 14px;
+  color: #123b29;
+  font-family: 'Inter', sans-serif;
+}
+
+#ecoRiskMap .leaflet-popup-content {
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+#ecoRiskMap .leaflet-popup-tip {
+  background: #ffffff;
+}
+
+/* Marcadores personalizados, quando usados no JS */
+
+#ecoRiskMap .leaflet-marker-icon {
+  cursor: pointer;
+}
+
+#ecoRiskMap .leaflet-interactive {
+  cursor: pointer;
+}
+
+/* LEGENDA DE RISCOS */
 
 .map-legend {
   display: flex;
@@ -2313,6 +2653,10 @@ input:focus-visible + .switch-slider {
   font-size: 10px;
 }
 
+.map-legend strong {
+  font-size: 11px;
+}
+
 .map-legend span {
   display: flex;
   align-items: center;
@@ -2320,16 +2664,26 @@ input:focus-visible + .switch-slider {
 }
 
 .map-legend i {
+  display: inline-block;
   width: 11px;
   height: 11px;
+  flex-shrink: 0;
   border-radius: 50%;
 }
 
-.risk-high { background: #f04444; }
-.risk-medium { background: #ff9629; }
-.risk-low { background: #ffd83d; }
+.risk-high {
+  background: #f04444;
+}
 
-/* ALERTAS */
+.risk-medium {
+  background: #ff9629;
+}
+
+.risk-low {
+  background: #ffd83d;
+}
+
+/* ALERTAS DA REGIÃO */
 
 .map-alerts {
   margin-top: 16px;
@@ -2387,7 +2741,7 @@ input:focus-visible + .switch-slider {
   flex-shrink: 0;
 }
 
-/* MENU INFERIOR */
+/* MENU INFERIOR DO MAPA */
 
 .map-page .map-bottom-nav {
   position: relative;
@@ -2439,9 +2793,7 @@ input:focus-visible + .switch-slider {
   font-weight: 700;
 }
 
-/* =====================================
-   ECOGUARD - CARTÃO DO MAPA
-===================================== */
+/* CARTÃO DE DETALHES DA REGIÃO */
 
 .map-region-card {
   margin-top: 14px;
@@ -2572,10 +2924,51 @@ input:focus-visible + .switch-slider {
   }
 }
 
+/* RESPONSIVIDADE DO MAPA */
 
-/* =====================================
-   ECOGUARD - TELA 8: PERFIL
-===================================== */
+@media (min-width: 600px) {
+  .map-page {
+    height: 100%;
+  }
+}
+
+@media (max-width: 360px) {
+  .map-header {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  .map-scroll {
+    padding-left: 13px;
+    padding-right: 13px;
+  }
+
+  .map-container {
+    height: 265px;
+  }
+
+  .map-heading h1 {
+    font-size: 23px;
+  }
+
+  .map-region-card {
+    padding: 14px;
+  }
+}
+
+@media (max-height: 700px) {
+  .map-container {
+    height: 245px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .map-region-card {
+    animation: none;
+  }
+}
+
+/* ECOGUARD - TELA 8: PERFIL */
 
 .profile-page {
   display: none;
@@ -2584,12 +2977,14 @@ input:focus-visible + .switch-slider {
   height: 100%;
   min-height: 0;
   overflow: hidden;
+
   background: linear-gradient(
     165deg,
     #073d2c 0%,
     #042d21 55%,
     #021e17 100%
   );
+
   color: #ffffff;
 }
 
@@ -2612,7 +3007,7 @@ input:focus-visible + .switch-slider {
   border: 1px solid #ffffff20;
   border-radius: 50%;
   background: #ffffff12;
-  color: white;
+  color: #ffffff;
   cursor: pointer;
 }
 
@@ -2632,8 +3027,16 @@ input:focus-visible + .switch-slider {
 }
 
 .profile-brand-icon {
-  color: #8cf5a8;
-  font-size: 25px;
+  display: block;
+  width: 30px;
+  height: 30px;
+  flex-shrink: 0;
+  object-fit: contain;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  box-shadow: none;
 }
 
 /* ÁREA ROLÁVEL */
@@ -2642,13 +3045,17 @@ input:focus-visible + .switch-slider {
   flex: 1;
   min-height: 0;
   overflow-y: auto;
+  overflow-x: hidden;
   padding: 8px 20px 32px;
   scrollbar-width: none;
+  overscroll-behavior: contain;
 }
 
 .profile-scroll::-webkit-scrollbar {
   display: none;
 }
+
+/* TÍTULO DO PERFIL */
 
 .profile-heading {
   margin-bottom: 22px;
@@ -2678,11 +3085,13 @@ input:focus-visible + .switch-slider {
   padding: 19px 15px;
   border: none;
   border-radius: 22px;
+
   background: linear-gradient(
     135deg,
     #f8faf2,
     #e8f2e6
   );
+
   color: #073c28;
   text-align: left;
   font-family: inherit;
@@ -2737,7 +3146,7 @@ input:focus-visible + .switch-slider {
   color: #5b8570;
 }
 
-/* SEÇÕES */
+/* SEÇÕES DO PERFIL */
 
 .profile-section {
   margin-top: 27px;
@@ -2752,7 +3161,7 @@ input:focus-visible + .switch-slider {
   text-transform: uppercase;
 }
 
-/* OPÇÕES */
+/* OPÇÕES E CONFIGURAÇÕES */
 
 .profile-option {
   display: flex;
@@ -2764,23 +3173,25 @@ input:focus-visible + .switch-slider {
   padding: 12px 15px;
   border: none;
   border-radius: 17px;
+
   background: #f3f7ee;
   color: #153d2b;
   text-align: left;
   font-family: inherit;
   cursor: pointer;
+
   transition:
     transform 0.2s ease,
     background 0.2s ease;
 }
 
+.profile-option:hover {
+  background: #e6f2e6;
+}
+
 .profile-option:active,
 .profile-user-card:active {
   transform: scale(0.98);
-}
-
-.profile-option:hover {
-  background: #e6f2e6;
 }
 
 .profile-option-icon {
@@ -2805,7 +3216,7 @@ input:focus-visible + .switch-slider {
   font-weight: 700;
 }
 
-/* VERSÃO */
+/* VERSÃO DO APLICATIVO */
 
 .profile-version {
   margin: 27px 0 5px;
@@ -2814,54 +3225,7 @@ input:focus-visible + .switch-slider {
   text-align: center;
 }
 
-/* MENU INFERIOR */
-
-.profile-page .profile-bottom-nav {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-around;
-  flex-shrink: 0;
-  width: 100%;
-  margin-top: auto;
-  padding: 12px 8px 16px;
-  background: #052a1e;
-  border-top: 1px solid #ffffff15;
-  z-index: 1000;
-}
-
-.profile-page .profile-bottom-nav .dash-nav-item {
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 5px;
-  min-width: 0;
-  border: none;
-  background: transparent;
-  color: #91b5a2;
-  font-family: inherit;
-  font-size: 10px;
-  cursor: pointer;
-}
-
-.profile-page .profile-bottom-nav .dash-nav-item svg {
-  width: 21px;
-  height: 21px;
-}
-
-.profile-page .profile-bottom-nav .dash-nav-item.active {
-  color: #76ef9e;
-}
-
-.profile-page .profile-bottom-nav .dash-nav-item.active span {
-  font-weight: 800;
-}
-
-/* =====================================
-   ECOGUARD - PADRONIZAÇÃO MENU PERFIL
-===================================== */
+/* MENU INFERIOR DO PERFIL */
 
 .profile-page .profile-bottom-nav {
   display: flex;
@@ -2869,16 +3233,16 @@ input:focus-visible + .switch-slider {
   align-items: center;
   justify-content: space-around;
   gap: 4px;
+
   flex-shrink: 0;
-  width: 100%;
+  width: auto;
+  margin: 0 16px 16px;
   padding: 7px;
-  margin-top: auto;
 
   background: #052f21;
   border: 1px solid #147747;
   border-radius: 28px;
-
-  z-index: 1000;
+  z-index: 10;
 }
 
 .profile-page .profile-bottom-nav .dash-nav-item {
@@ -2898,9 +3262,9 @@ input:focus-visible + .switch-slider {
   background: transparent;
 
   color: #ffffff;
+  font-family: inherit;
   font-size: 11px;
   font-weight: 500;
-
   cursor: pointer;
 }
 
@@ -2922,3 +3286,1002 @@ input:focus-visible + .switch-slider {
 .profile-page .profile-bottom-nav .dash-nav-item.active span {
   font-weight: 800;
 }
+
+/* =====================================
+   AJUSTES FINAIS - IDENTIDADE OFICIAL
+===================================== */
+
+/* Logo completo da tela inicial */
+
+.welcome-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.welcome-official-logo {
+  display: block;
+  width: min(100%, 340px);
+  max-width: 100%;
+  height: auto;
+
+  background: transparent;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  object-fit: contain;
+
+  filter: drop-shadow(
+    0 2px 4px rgba(0, 0, 0, 0.18)
+  );
+}
+
+/* Ícone oficial nos cabeçalhos */
+
+.official-brand-icon,
+.permissions-brand .brand-icon,
+.profile-brand .profile-brand-icon {
+  display: block;
+  width: 30px;
+  height: 30px;
+  flex: 0 0 30px;
+
+  object-fit: contain;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  box-shadow: none;
+}
+
+/* =====================================
+   AJUSTES FINAIS - RESPONSIVIDADE
+===================================== */
+
+/* Impede que imagens ultrapassem a tela */
+
+.app img {
+  max-width: 100%;
+}
+
+/* Telas exibidas dentro do protótipo */
+
+@media (min-width: 600px) {
+  .profile-page,
+  .map-page,
+  .alerts-page,
+  .alert-detail,
+  .dashboard,
+  .lock-screen {
+    height: 100%;
+    min-height: 0;
+  }
+}
+
+/* Celulares pequenos */
+
+@media (max-width: 360px) {
+  .welcome-official-logo {
+    width: min(100%, 290px);
+  }
+
+  .profile-header {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  .profile-scroll {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  .profile-user-card {
+    padding: 15px 12px;
+    gap: 10px;
+  }
+
+  .profile-user-info h2 {
+    font-size: 17px;
+  }
+
+  .profile-option {
+    gap: 10px;
+    padding: 10px 12px;
+  }
+}
+
+/* Telas com pouca altura */
+
+@media (max-height: 700px) {
+  .profile-header {
+    padding-top: 15px;
+    padding-bottom: 10px;
+  }
+
+  .profile-section {
+    margin-top: 20px;
+  }
+
+  .profile-scroll {
+    padding-bottom: 20px;
+  }
+}
+
+/* Acessibilidade */
+
+@media (prefers-reduced-motion: reduce) {
+  .profile-option,
+  .profile-user-card {
+    transition: none;
+  }
+}
+
+/* ==========================================
+   ECOGUARD - RESPONSIVIDADE FINAL
+   CELULAR, TABLET E DESKTOP
+========================================== */
+
+/* Evita barras horizontais indesejadas */
+html,
+body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* ==========================================
+   TABLET - A PARTIR DE 768PX
+========================================== */
+
+@media (min-width: 768px) {
+
+  /* Remove a moldura de celular */
+  .app {
+    width: 100%;
+    max-width: none;
+    height: 100dvh;
+    min-height: 100dvh;
+    margin: 0;
+    border: none;
+    border-radius: 0;
+    overflow: hidden;
+  }
+
+  /* Todas as telas ocupam o dispositivo */
+  .welcome,
+  .permissions,
+  .dashboard,
+  .alerts-page,
+  .alert-detail,
+  .lock-screen,
+  .map-page,
+  .profile-page {
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+  }
+
+  /* TELA INICIAL */
+  .welcome-content {
+    width: 100%;
+    max-width: 720px;
+    height: 100%;
+    min-height: 100%;
+    padding: 55px 40px 45px;
+  }
+
+  .welcome-official-logo {
+    width: min(100%, 390px);
+    max-width: 390px;
+  }
+
+  .welcome-text {
+    margin-top: 35px;
+  }
+
+  .welcome-text h2 {
+    font-size: clamp(28px, 4vw, 38px);
+  }
+
+  .welcome-text p {
+    font-size: 17px;
+  }
+
+  .welcome-footer {
+    max-width: 480px;
+  }
+
+  /* PERMISSÕES */
+  .permissions {
+    padding: 35px 5% 40px;
+  }
+
+  .permissions-intro {
+    margin-top: 35px;
+  }
+
+  .permissions-list {
+    width: 100%;
+    max-width: 800px;
+    margin: 35px auto 0;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-content: start;
+  }
+
+  .permissions-footer {
+    width: 100%;
+    max-width: 480px;
+    margin: auto auto 0;
+  }
+
+  /* ÁREAS COM ROLAGEM */
+  .dashboard-content,
+  .alerts-content,
+  .alert-detail-content,
+  .map-scroll,
+  .profile-scroll {
+    width: 100%;
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+
+  /* DASHBOARD */
+  .dash-greeting h1 {
+    font-size: 36px;
+  }
+
+  .safe-card {
+    min-height: 150px;
+    padding: 26px;
+  }
+
+  .dash-indicators {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+  }
+
+  .indicator-card {
+    min-height: 180px;
+    padding: 24px;
+  }
+
+  .dash-alerts {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  /* ALERTAS */
+  .environment-alert {
+    max-width: 100%;
+  }
+
+  .environment-alert-main {
+    padding: 24px;
+  }
+
+  /* DETALHES */
+  .detail-heat-banner {
+    min-height: 190px;
+  }
+
+  .detail-heat-text h1 {
+    font-size: 32px;
+  }
+
+  /* MAPA */
+  .map-container {
+    height: clamp(380px, 50vh, 650px);
+  }
+
+  /* PERFIL */
+  .profile-user-card {
+    padding: 25px;
+  }
+
+  .profile-option {
+    min-height: 70px;
+  }
+
+  /* MENUS INFERIORES */
+  .dashboard .dash-nav,
+  .alerts-page .dash-nav,
+  .map-page .map-bottom-nav,
+  .profile-page .profile-bottom-nav {
+    width: min(90%, 900px);
+    margin: 0 auto 18px;
+  }
+
+  /* NOTIFICAÇÃO SIMULADA */
+  .eco-notification {
+    max-width: 560px;
+  }
+}
+
+/* ==========================================
+   DESKTOP - A PARTIR DE 1200PX
+========================================== */
+
+@media (min-width: 1200px) {
+
+  .welcome-content {
+    max-width: 850px;
+    padding-top: 45px;
+  }
+
+  .welcome-official-logo {
+    width: min(100%, 430px);
+    max-width: 430px;
+  }
+
+  .welcome-text h2 {
+    font-size: 42px;
+  }
+
+  .dashboard-content,
+  .alerts-content,
+  .alert-detail-content,
+  .map-scroll,
+  .profile-scroll {
+    padding-left: max(5%, calc((100% - 1200px) / 2));
+    padding-right: max(5%, calc((100% - 1200px) / 2));
+  }
+
+  .dash-indicators {
+    gap: 24px;
+  }
+
+  .indicator-card {
+    min-height: 200px;
+  }
+
+  .dash-alerts {
+    gap: 20px;
+  }
+
+  .map-container {
+    height: min(60vh, 700px);
+  }
+
+  .permissions-list {
+    max-width: 950px;
+  }
+
+  .permissions-footer {
+    max-width: 520px;
+  }
+}
+
+/* ==========================================
+   CELULARES - ATÉ 767PX
+========================================== */
+
+@media (max-width: 767px) {
+
+  .app {
+    width: 100%;
+    max-width: none;
+    min-height: 100dvh;
+    margin: 0;
+    border: none;
+    border-radius: 0;
+  }
+
+  .welcome-content {
+    max-width: 430px;
+  }
+
+  .dash-indicators {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .dash-alerts {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+/* ==========================================
+   ECOGUARD - ESCALA VISUAL PARA TABLETS
+   A PARTIR DE 768PX
+========================================== */
+
+@media (min-width: 768px) and (max-width: 1199px) {
+
+  /* CONFIGURAÇÕES GERAIS */
+
+  .app {
+    font-size: 17px;
+  }
+
+  /* TELA 1 - BOAS-VINDAS */
+
+  .welcome-content {
+    max-width: 850px;
+    padding: 65px 50px 45px;
+  }
+
+  .welcome-official-logo {
+    width: 500px;
+    max-width: 90%;
+  }
+
+  .welcome-text {
+    margin-top: 55px;
+  }
+
+  .welcome-text h2 {
+    font-size: 42px;
+    line-height: 1.3;
+  }
+
+  .welcome-text p {
+    font-size: 20px;
+    line-height: 1.8;
+  }
+
+  .green-line {
+    width: 70px;
+    height: 5px;
+  }
+
+  .start-button {
+    min-height: 76px;
+    font-size: 21px;
+  }
+
+  /* TELA 2 - PERMISSÕES */
+
+  .permissions {
+    padding: 55px 6%;
+  }
+
+  .permissions-intro h2 {
+    font-size: 44px;
+  }
+
+  .permissions-intro p {
+    font-size: 19px;
+    max-width: 600px;
+  }
+
+  .permissions-icon {
+    width: 105px;
+    height: 105px;
+  }
+
+  .permissions-icon svg {
+    width: 60px;
+    height: 60px;
+  }
+
+  .permission-card {
+    padding: 28px;
+    min-height: 140px;
+  }
+
+  .permission-info h3 {
+    font-size: 20px;
+  }
+
+  .permission-info p {
+    font-size: 15px;
+  }
+
+  .continue-button {
+    min-height: 76px;
+    font-size: 21px;
+  }
+
+  /* TELA 3 - DASHBOARD */
+
+  .dashboard-content {
+    padding-top: 55px;
+  }
+
+  .dash-header {
+    margin-bottom: 45px;
+  }
+
+  .dash-brand {
+    font-size: 24px;
+  }
+
+  .dash-brand .official-brand-icon {
+    width: 42px;
+    height: 42px;
+  }
+
+  .dash-greeting h1 {
+    font-size: 44px;
+  }
+
+  .dash-location {
+    font-size: 19px;
+  }
+
+  .safe-card {
+    min-height: 190px;
+    padding: 32px;
+    gap: 25px;
+  }
+
+  .safe-shield {
+    width: 75px;
+  }
+
+  .safe-info h2 {
+    font-size: 26px;
+  }
+
+  .safe-info p {
+    font-size: 17px;
+  }
+
+  .dash-indicators {
+    gap: 22px;
+    margin-top: 28px;
+  }
+
+  .indicator-card {
+    min-height: 230px;
+    padding: 30px;
+  }
+
+  .indicator-card h3 {
+    font-size: 18px;
+  }
+
+  .indicator-card strong {
+    font-size: 48px;
+  }
+
+  .indicator-card p {
+    font-size: 16px;
+  }
+
+  .dash-section-title {
+    margin-top: 40px;
+  }
+
+  .dash-section-title h2 {
+    font-size: 28px;
+  }
+
+  .dash-section-title button {
+    font-size: 16px;
+  }
+
+  .recent-alert {
+    min-height: 120px;
+    padding: 24px;
+  }
+
+  .recent-alert h3 {
+    font-size: 19px;
+  }
+
+  .recent-alert p {
+    font-size: 15px;
+  }
+
+  /* NAVEGAÇÃO */
+
+  .dash-nav-item {
+    min-height: 80px;
+    font-size: 15px;
+  }
+
+  .dash-nav-item svg {
+    width: 30px;
+    height: 30px;
+  }
+
+  /* TELA 4 - ALERTAS */
+
+  .alerts-heading h1 {
+    font-size: 46px;
+  }
+
+  .alerts-heading p {
+    font-size: 19px;
+  }
+
+  .environment-alert-main {
+    padding: 30px;
+  }
+
+  .environment-info h2 {
+    font-size: 27px;
+  }
+
+  .environment-info p {
+    font-size: 17px;
+  }
+
+  .environment-meta {
+    padding: 20px;
+    font-size: 15px;
+  }
+
+  .alert-level {
+    font-size: 15px;
+  }
+
+  /* TELA 5 - DETALHES */
+
+  .detail-location {
+    font-size: 19px;
+  }
+
+  .detail-heat-banner {
+    min-height: 230px;
+    padding: 35px;
+  }
+
+  .detail-heat-text h1 {
+    font-size: 38px;
+  }
+
+  .detail-temp-value strong {
+    font-size: 58px;
+  }
+
+  .detail-card {
+    padding: 30px;
+  }
+
+  .detail-card h2 {
+    font-size: 23px;
+  }
+
+  .detail-card p,
+  .care-list li {
+    font-size: 17px;
+  }
+
+  .activate-alert-btn {
+    min-height: 75px;
+    font-size: 19px;
+  }
+
+  /* TELA 6 - NOTIFICAÇÃO */
+
+  .lock-clock h1 {
+    font-size: 115px;
+  }
+
+  .lock-clock p {
+    font-size: 28px;
+  }
+
+  .eco-notification {
+    max-width: 680px;
+    padding: 25px;
+  }
+
+  /* TELA 7 - MAPA */
+
+  .map-container {
+    height: 55vh;
+    min-height: 450px;
+  }
+
+  /* TELA 8 - PERFIL */
+
+  .profile-user-card {
+    padding: 35px;
+  }
+
+  .profile-option {
+    min-height: 90px;
+    font-size: 18px;
+  }
+}
+
+/* ==========================================
+   AJUSTES PARA TABLETS NA HORIZONTAL
+========================================== */
+
+@media (min-width: 768px) and (max-height: 650px) {
+
+  .welcome-content {
+    padding-top: 25px;
+    padding-bottom: 20px;
+  }
+
+  .welcome-official-logo {
+    width: 280px;
+  }
+
+  .welcome-text {
+    margin-top: 15px;
+  }
+
+  .welcome-text h2 {
+    font-size: 27px;
+  }
+
+  .welcome-text p {
+    font-size: 14px;
+  }
+
+  .start-button {
+    min-height: 55px;
+  }
+
+  .dashboard-content {
+    padding-top: 20px;
+  }
+}
+
+/* ==========================================
+   ECOGUARD - MAPA E PERFIL RESPONSIVOS
+   TABLET E DESKTOP
+========================================== */
+
+@media (min-width: 768px) {
+
+  /* TELA 7 - MAPA */
+
+  .map-heading h1 {
+    font-size: clamp(34px, 3.5vw, 46px);
+  }
+
+  .map-heading p {
+    font-size: 18px;
+    line-height: 1.7;
+  }
+
+  .map-location {
+    font-size: 18px;
+    padding: 20px 24px;
+    border-radius: 20px;
+  }
+
+  .map-location svg {
+    width: 26px;
+    height: 26px;
+  }
+
+  .map-legend {
+    font-size: 15px;
+    padding: 18px 22px;
+    gap: 15px;
+  }
+
+  .map-legend strong {
+    font-size: 17px;
+  }
+
+  .map-legend i {
+    width: 15px;
+    height: 15px;
+  }
+
+  .map-alerts {
+    margin-top: 30px;
+  }
+
+  .map-alerts h2 {
+    font-size: 27px;
+    margin-bottom: 18px;
+  }
+
+  .map-alert-card {
+    padding: 24px;
+    gap: 20px;
+    border-radius: 22px;
+  }
+
+  .map-alert-icon {
+    width: 62px;
+    height: 62px;
+  }
+
+  .map-alert-icon svg {
+    width: 36px;
+    height: 36px;
+  }
+
+  .map-alert-card strong {
+    font-size: 20px;
+  }
+
+  .map-alert-card p {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .map-region-card {
+    padding: 28px;
+  }
+
+  .map-region-label {
+    font-size: 14px;
+  }
+
+  .map-region-top h3 {
+    font-size: 29px;
+  }
+
+  .map-region-info,
+  .map-region-risk {
+    font-size: 16px;
+  }
+
+  .map-region-card p {
+    font-size: 17px;
+    line-height: 1.7;
+  }
+
+  .map-region-action {
+    min-height: 64px;
+    font-size: 18px;
+  }
+
+  /* TEXTOS INTERNOS DO LEAFLET */
+
+  .map-page .leaflet-popup-content {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .map-page .leaflet-control-zoom a {
+    width: 38px;
+    height: 38px;
+    line-height: 38px;
+    font-size: 24px;
+  }
+
+  /* TELA 8 - PERFIL */
+
+  .profile-heading {
+    margin-bottom: 32px;
+  }
+
+  .profile-heading h1 {
+    font-size: clamp(36px, 3.5vw, 46px);
+  }
+
+  .profile-heading p {
+    font-size: 18px;
+    line-height: 1.6;
+  }
+
+  .profile-user-card {
+    min-height: 145px;
+    padding: 30px;
+    gap: 22px;
+    border-radius: 26px;
+  }
+
+  .profile-avatar {
+    width: 82px;
+    height: 82px;
+  }
+
+  .profile-avatar svg {
+    width: 44px;
+    height: 44px;
+  }
+
+  .profile-user-info h2 {
+    font-size: 27px;
+  }
+
+  .profile-user-info span {
+    font-size: 17px;
+  }
+
+  .profile-user-info span svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .profile-chevron {
+    width: 27px;
+    height: 27px;
+  }
+
+  .profile-section {
+    margin-top: 38px;
+  }
+
+  .profile-section h3 {
+    font-size: 17px;
+    margin-bottom: 20px;
+  }
+
+  .profile-option {
+    min-height: 90px;
+    padding: 20px 25px;
+    gap: 20px;
+    border-radius: 22px;
+  }
+
+  .profile-option-icon {
+    width: 58px;
+    height: 58px;
+    border-radius: 17px;
+  }
+
+  .profile-option-icon svg {
+    width: 30px;
+    height: 30px;
+  }
+
+  .profile-option > span {
+    font-size: 19px;
+    line-height: 1.4;
+  }
+
+  .profile-version {
+    font-size: 15px;
+    margin-top: 35px;
+  }
+
+  /* NAVEGAÇÃO INFERIOR */
+
+  .map-page .dash-nav-item,
+  .profile-page .profile-bottom-nav .dash-nav-item {
+    min-height: 82px;
+    font-size: 15px;
+  }
+
+  .map-page .dash-nav-item svg,
+  .profile-page .profile-bottom-nav .dash-nav-item svg {
+    width: 30px;
+    height: 30px;
+  }
+}
+/* ==========================================
+   ECOGUARD - AJUSTES FINAIS DE ROLAGEM
+========================================== */
+
+@media (min-width: 768px) {
+
+  /* Espaço para o conteúdo não ficar
+     escondido atrás da navegação */
+
+  .dashboard-content,
+  .alerts-content,
+  .alert-detail-content {
+    padding-bottom: 45px;
+  }
+
+  /* Melhor leitura dos textos pequenos */
+
+  .indicator-card h3 {
+    font-size: 17px;
+  }
+
+  .indicator-card p,
+  .recent-alert p,
+  .environment-info p {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  .environment-meta {
+    font-size: 14px;
+  }
+
+  .recent-alert h3 {
+    font-size: 19px;
+  }
+
+  /* Navegação */
+
+  .dash-nav-item {
+    font-size: 15px;
+  }
+
+  .dash-nav-item svg {
+    width: 29px;
+    height: 29px;
+  }
+}
+

@@ -1,13 +1,22 @@
 
 {
+  "id": "./",
   "name": "ECOGUARD - Inteligência Climática",
   "short_name": "ECOGUARD",
-  "description": "Inteligência climática para o seu bem-estar",
+  "description": "Inteligência climática para o seu bem-estar. Monitore riscos ambientais, receba alertas preventivos e acompanhe informações climáticas para proteger você e sua comunidade.",
+  "lang": "pt-BR",
+  "dir": "ltr",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
-  "background_color": "#052e22",
-  "theme_color": "#052e22",
+  "orientation": "portrait",
+  "background_color": "#00291D",
+  "theme_color": "#003C29",
+  "categories": [
+    "weather",
+    "health",
+    "utilities"
+  ],
   "icons": [
     {
       "src": "./assets/icon-192.png",
@@ -21,5 +30,22 @@
       "type": "image/png",
       "purpose": "any"
     }
+  ],
+  "screenshots": [
+    {
+      "src": "./assets/screenshots/mobile.png",
+      "sizes": "390x844",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "ECOGUARD - Aplicativo mobile"
+    },
+    {
+      "src": "./assets/screenshots/desktop.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "ECOGUARD - Painel de monitoramento"
+    }
   ]
+
 }
